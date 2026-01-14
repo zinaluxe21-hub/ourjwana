@@ -2,8 +2,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Star, 
-  MapPin, 
+  Phone, 
   ShieldCheck, 
   Clock, 
   Car as CarIcon,
@@ -11,16 +10,13 @@ import {
   Mountain,
   Users,
   Trophy,
-  Instagram,
-  Facebook,
-  Phone,
-  Mail,
+  Star,
   SearchX,
   ChevronDown,
-  Info,
-  ArrowRight
+  Mail
 } from 'lucide-react';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import CarCard from './components/CarCard';
 import CarModal from './components/CarModal';
 import { carsData, Car } from './constants/carsData';
@@ -83,47 +79,42 @@ const App: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen selection:bg-primary selection:text-white overflow-x-hidden">
+    <div className="min-h-screen selection:bg-primary selection:text-white overflow-x-hidden bg-secondary">
       <Navbar />
-
+      
       {/* Hero Section */}
-      <section id="home" className="relative h-[95vh] flex items-center overflow-hidden">
+      <section id="home" className="relative h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1539419332720-fa3278408f9c?auto=format&fit=crop&q=80&w=2000" 
-            alt="Marrakech Landscape" 
             className="w-full h-full object-cover"
+            alt="Marrakech Hero"
           />
-          <div className="absolute inset-0 bg-black/50 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-black/40 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
         </div>
         
-        <div className="relative container mx-auto px-6 z-10">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            className="max-w-4xl text-white"
+        <div className="relative container mx-auto px-6 z-10 text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl"
           >
-            <motion.span 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="inline-block bg-primary/20 backdrop-blur-md border border-primary/30 px-6 py-2 rounded-full text-xs font-bold tracking-[0.3em] uppercase mb-8"
-            >
-              Élégance & Hospitalité Marocaine
-            </motion.span>
-            <h1 className="text-5xl md:text-8xl font-bold mb-8 leading-[1] md:leading-[1]">
-              L'Expérience <br/> <span className="text-primary italic">Ourjwana</span>
+            <span className="inline-block bg-primary/20 backdrop-blur-md border border-primary/30 px-6 py-2 rounded-full text-xs font-bold tracking-[0.3em] uppercase mb-8">
+              L'Art de Rouler à Marrakech
+            </span>
+            <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
+              L'Expérience<br/><span className="text-primary italic">Ourjwana</span>
             </h1>
-            <p className="text-lg md:text-2xl text-gray-200 mb-12 max-w-2xl font-light leading-relaxed">
-              Découvrez la magie de Marrakech à bord de nos véhicules premium. Un service sur mesure pour des moments inoubliables.
+            <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-2xl font-light">
+              Découvrez la Ville Rouge avec élégance. Une flotte premium sélectionnée pour votre confort et votre style.
             </p>
-            <div className="flex flex-col sm:flex-row gap-5">
-              <a href="#fleet" className="bg-primary text-white px-12 py-5 rounded-full font-bold hover:bg-primary/90 transition-all shadow-2xl shadow-primary/40 text-center active:scale-95 text-lg">
-                Explorer la Flotte
+            <div className="flex flex-wrap gap-4">
+              <a href="#fleet" className="bg-primary text-white px-10 py-4 rounded-full font-bold shadow-xl hover:bg-primary/90 transition-all text-lg">
+                Voir la Flotte
               </a>
-              <a href="https://wa.me/212600000000" className="bg-white/10 backdrop-blur-xl text-white border border-white/20 px-12 py-5 rounded-full font-bold hover:bg-white/20 transition-all text-center text-lg flex items-center justify-center gap-3">
-                <Phone size={20} /> WhatsApp Express
+              <a href="https://wa.me/212600000000" className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-full font-bold hover:bg-white/20 transition-all flex items-center gap-3 text-lg">
+                <Phone size={20}/> Réserver Express
               </a>
             </div>
           </motion.div>
@@ -131,127 +122,101 @@ const App: React.FC = () => {
       </section>
 
       {/* Fleet Section */}
-      <section id="fleet" className="py-24 md:py-32 container mx-auto px-6 scroll-mt-20">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-10">
-          <div className="max-w-2xl">
-            <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Catalogue</span>
-            <h2 className="text-4xl md:text-7xl font-bold text-accent leading-[1.1]">Sélection <br/> <span className="text-primary italic">Signature</span></h2>
+      <section id="fleet" className="py-32 container mx-auto px-6 scroll-mt-20">
+        <div className="mb-20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-16">
+            <div className="max-w-2xl">
+              <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Notre Sélection</span>
+              <h2 className="text-5xl font-bold text-accent">La Flotte <span className="text-primary italic">Signature</span></h2>
+            </div>
+            
+            <div className="flex overflow-x-auto pb-4 gap-3 no-scrollbar">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setFilter(cat.id as any)}
+                  className={`flex-shrink-0 flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all border ${
+                    filter === cat.id 
+                    ? 'bg-accent border-accent text-white shadow-xl' 
+                    : 'bg-white border-primary/5 text-accent hover:border-primary/20'
+                  }`}
+                >
+                  <span className="opacity-50">{cat.icon}</span>
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
-          
-          <div className="flex overflow-x-auto pb-4 no-scrollbar gap-3 -mx-6 px-6 lg:mx-0 lg:px-0">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setFilter(cat.id as any)}
-                className={`flex-shrink-0 flex items-center gap-3 px-10 py-5 rounded-2xl font-bold transition-all text-sm border ${
-                  filter === cat.id 
-                  ? 'bg-accent border-accent text-white shadow-2xl shadow-accent/20' 
-                  : 'bg-white border-primary/5 text-accent hover:border-primary/20 hover:bg-primary/5'
-                }`}
-              >
-                {cat.id !== 'All' && <span className="opacity-50">{cat.icon}</span>}
-                {cat.label}
-              </button>
-            ))}
-          </div>
-        </div>
 
-        <div className="min-h-[600px]">
           <AnimatePresence mode="wait">
             {filteredCars.length > 0 ? (
               <motion.div 
                 key={filter}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.5 }}
-                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12"
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
               >
-                {filteredCars.map((car) => (
+                {filteredCars.map(car => (
                   <CarCard 
                     key={car.id} 
                     car={car} 
-                    onViewDetails={setSelectedCar} 
+                    onViewDetails={() => setSelectedCar(car)} 
                   />
                 ))}
               </motion.div>
             ) : (
-              <motion.div 
-                key="empty"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="flex flex-col items-center justify-center py-40 text-center"
-              >
-                <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center mb-8 shadow-xl border border-primary/5">
-                  <SearchX className="text-primary/20" size={64} />
-                </div>
-                <h3 className="text-4xl font-bold text-accent mb-4">Aucun résultat</h3>
-                <p className="text-gray-500 max-w-sm mb-12 text-lg">Nous préparons de nouveaux véhicules pour cette catégorie.</p>
-                <button 
-                  onClick={() => setFilter('All')}
-                  className="bg-accent text-white px-10 py-4 rounded-full font-bold shadow-lg"
-                >
-                  Tout afficher
-                </button>
-              </motion.div>
+              <div className="py-40 text-center flex flex-col items-center">
+                <SearchX className="text-primary/10 mb-6" size={80} />
+                <h3 className="text-3xl font-bold text-accent">Aucun véhicule disponible</h3>
+                <p className="text-gray-500 mt-2">Nous renouvelons notre stock régulièrement.</p>
+              </div>
             )}
           </AnimatePresence>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-32 md:py-48 bg-secondary relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent opacity-50" />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-24 items-center">
-            <div className="relative">
-              <div className="aspect-[3/4] rounded-[3rem] overflow-hidden shadow-3xl transform -rotate-3 hover:rotate-0 transition-transform duration-700">
-                <img 
-                  src="https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=1200" 
-                  alt="Marrakech Riad Interior" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-12 -right-12 bg-white p-10 rounded-[2rem] shadow-2xl z-20 max-w-[320px] border border-primary/10">
-                <div className="flex text-gold mb-6">
-                  {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" size={16} />)}
-                </div>
-                <p className="text-base font-bold text-accent italic leading-relaxed mb-6">
-                  "Une flotte impeccable et une équipe d'une gentillesse rare. Notre séjour a été transformé."
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">SM</div>
-                  <div>
-                    <p className="text-sm font-bold text-accent">Sofia M.</p>
-                    <p className="text-xs text-gray-400">Voyageuse Luxe</p>
-                  </div>
-                </div>
-              </div>
+      <section id="about" className="py-32 bg-white relative overflow-hidden scroll-mt-20">
+        <div className="absolute inset-0 zellige-pattern opacity-5 pointer-events-none" />
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
+          <div className="relative">
+            <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl rotate-2">
+              <img 
+                src="https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=1200" 
+                className="w-full h-full object-cover"
+                alt="About Ourjwana"
+              />
             </div>
-
-            <div className="space-y-12">
-              <header>
-                <span className="text-primary font-bold tracking-[0.5em] uppercase text-xs mb-4 block">Philosophie</span>
-                <h2 className="text-4xl md:text-7xl font-bold text-accent leading-tight">Au-delà de la <br/> <span className="text-primary italic">Simple Location</span></h2>
-              </header>
-              <p className="text-xl text-gray-600 leading-relaxed font-light">
-                Chaque trajet à Marrakech doit être un poème. Nous avons conçu Ourjwana Car comme une extension de l'hospitalité des plus grands Riads de la ville.
+            <div className="absolute -bottom-10 -left-10 bg-white p-10 rounded-[2rem] shadow-2xl max-w-xs border border-primary/10">
+              <div className="flex text-gold mb-4">
+                {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" size={16} />)}
+              </div>
+              <p className="text-base italic font-medium text-accent leading-relaxed">
+                "Un service impeccable. La Range Rover était neuve et propre. L'accueil à l'aéroport est un vrai plus."
               </p>
-              <div className="grid sm:grid-cols-2 gap-12">
-                <div className="space-y-5">
-                  <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-primary">
-                    <ShieldCheck size={36} />
-                  </div>
-                  <h4 className="text-2xl font-bold text-accent">Confiance</h4>
-                  <p className="text-gray-500 leading-relaxed">Transparence totale sur les tarifs et l'état des véhicules pour une sérénité absolue.</p>
-                </div>
-                <div className="space-y-5">
-                  <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-primary">
-                    <Clock size={36} />
-                  </div>
-                  <h4 className="text-2xl font-bold text-accent">Disponibilité</h4>
-                  <p className="text-gray-500 leading-relaxed">Notre équipe est à votre écoute 24/7 pour toute demande particulière ou urgence.</p>
-                </div>
+              <p className="mt-4 text-sm font-bold text-primary">Jean-Luc P.</p>
+            </div>
+          </div>
+
+          <div className="space-y-10">
+            <header>
+              <span className="text-primary font-bold tracking-[0.5em] uppercase text-xs mb-4 block">Notre Philosophie</span>
+              <h2 className="text-5xl md:text-7xl font-bold text-accent">Au-delà de la <br/><span className="text-primary italic">Simple Location</span></h2>
+            </header>
+            <p className="text-xl text-gray-600 leading-relaxed font-light">
+              Chaque trajet à Marrakech doit être un poème. Nous avons conçu Ourjwana Car comme une extension de l'hospitalité des plus grands Riads de la ville.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-8 pt-6">
+              <div className="space-y-4">
+                <div className="w-14 h-14 bg-secondary rounded-2xl flex items-center justify-center text-primary shadow-sm"><ShieldCheck size={28}/></div>
+                <h4 className="text-xl font-bold text-accent">Confiance</h4>
+                <p className="text-gray-500 text-sm">Transparence totale et véhicules rigoureusement entretenus.</p>
+              </div>
+              <div className="space-y-4">
+                <div className="w-14 h-14 bg-secondary rounded-2xl flex items-center justify-center text-primary shadow-sm"><Clock size={28}/></div>
+                <h4 className="text-xl font-bold text-accent">Rapidité</h4>
+                <p className="text-gray-500 text-sm">Livraison à l'aéroport ou à votre Riad en moins de 20 minutes.</p>
               </div>
             </div>
           </div>
@@ -265,10 +230,8 @@ const App: React.FC = () => {
             <div className="text-center mb-20">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Questions Fréquentes</span>
               <h2 className="text-4xl md:text-6xl font-bold text-accent">Informations <span className="text-primary italic">Utiles</span></h2>
-              <div className="w-24 h-1 bg-primary/20 mx-auto mt-6 rounded-full" />
             </div>
             <div className="bg-secondary rounded-[3rem] p-8 md:p-16 shadow-inner relative overflow-hidden">
-               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32" />
                <div className="relative z-10">
                 {faqs.map((faq, idx) => (
                   <FAQItem key={idx} question={faq.question} answer={faq.answer} />
@@ -286,7 +249,6 @@ const App: React.FC = () => {
           <div className="grid lg:grid-cols-2">
             <div className="p-10 md:p-24 flex flex-col justify-center">
               <h2 className="text-5xl md:text-7xl font-bold text-white mb-10 leading-tight">Votre Voyage <br/> <span className="text-primary italic">Commence Ici</span></h2>
-              <p className="text-gray-300 text-xl mb-16 max-w-sm font-light leading-relaxed">Une question ? Une réservation spéciale ? Nos conseillers vous répondent instantanément.</p>
               
               <div className="space-y-10">
                 <a href="tel:+212600000000" className="flex items-center gap-8 group cursor-pointer">
@@ -298,113 +260,30 @@ const App: React.FC = () => {
                     <p className="text-2xl font-bold text-white group-hover:text-primary transition-colors">+212 600 000 000</p>
                   </div>
                 </a>
-                
-                <a href="mailto:booking@ourjwana.ma" className="flex items-center gap-8 group cursor-pointer">
-                  <div className="w-20 h-20 bg-white/5 rounded-[2rem] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-xl">
-                    <Mail size={32} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Demande par Email</p>
-                    <p className="text-2xl font-bold text-white group-hover:text-primary transition-colors">booking@ourjwana.ma</p>
-                  </div>
-                </a>
               </div>
             </div>
 
             <div className="bg-primary/10 p-10 md:p-24 flex items-center justify-center relative">
               <div className="w-full max-w-md bg-white p-10 rounded-[3rem] shadow-2xl">
                 <h3 className="text-2xl font-bold text-accent mb-8">Nous Écrire</h3>
-                <div className="space-y-6">
+                <form className="space-y-6">
                   <div>
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 block">Nom Complet</label>
-                    <input type="text" className="w-full bg-secondary border-none rounded-2xl p-4 focus:ring-2 focus:ring-primary/20" placeholder="Votre nom..." />
+                    <input type="text" className="w-full bg-secondary border-none rounded-2xl p-4" placeholder="Votre nom..." />
                   </div>
                   <div>
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 block">Message</label>
-                    <textarea className="w-full bg-secondary border-none rounded-2xl p-4 h-32 focus:ring-2 focus:ring-primary/20" placeholder="Votre demande..."></textarea>
+                    <textarea className="w-full bg-secondary border-none rounded-2xl p-4 h-32" placeholder="Votre demande..."></textarea>
                   </div>
-                  <button className="w-full bg-primary text-white py-5 rounded-2xl font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform">
+                  <button type="button" className="w-full bg-primary text-white py-5 rounded-2xl font-bold shadow-xl">
                     Envoyer
                   </button>
-                </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-secondary pt-24 pb-12 relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-full h-1 zellige-pattern opacity-10" />
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
-            <div className="col-span-1 lg:col-span-1">
-               <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 bg-primary flex items-center justify-center rounded-sm rotate-45">
-                  <span className="text-white -rotate-45 font-bold text-xl">O</span>
-                </div>
-                <h1 className="text-2xl font-bold tracking-tighter text-accent">
-                  Ourjwana <span className="text-primary">Car</span>
-                </h1>
-              </div>
-              <p className="text-gray-500 leading-relaxed mb-8">
-                Location de voitures premium à Marrakech. Allier tradition d'accueil et modernité de service.
-              </p>
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-accent hover:bg-primary hover:text-white transition-all cursor-pointer">
-                  <Instagram size={20} />
-                </div>
-                <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-accent hover:bg-primary hover:text-white transition-all cursor-pointer">
-                  <Facebook size={20} />
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-accent uppercase tracking-widest text-xs mb-8">Navigation</h4>
-              <ul className="space-y-4">
-                {['Accueil', 'La Flotte', 'Services', 'Témoignages', 'Contact'].map(link => (
-                  <li key={link}>
-                    <a href="#" className="text-gray-500 hover:text-primary transition-colors text-sm font-medium">{link}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-accent uppercase tracking-widest text-xs mb-8">Informations</h4>
-              <ul className="space-y-4">
-                {['Conditions de Location', 'Politique de Confidentialité', 'Nos Agences', 'Aide & FAQ'].map(link => (
-                  <li key={link}>
-                    <a href="#" className="text-gray-500 hover:text-primary transition-colors text-sm font-medium">{link}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-accent uppercase tracking-widest text-xs mb-8">Newsletter</h4>
-              <p className="text-gray-500 text-sm mb-6">Recevez nos offres exclusives et guides de voyage.</p>
-              <div className="flex gap-2 p-1 bg-white rounded-2xl shadow-sm">
-                <input type="email" placeholder="Votre email" className="bg-transparent border-none flex-1 px-4 text-sm focus:ring-0" />
-                <button className="bg-accent text-white p-3 rounded-xl hover:bg-primary transition-colors">
-                  <ArrowRight size={18} />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-12 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-8">
-            <p className="text-xs text-gray-400 font-medium">
-              &copy; {new Date().getFullYear()} Ourjwana Car Marrakech. Tous droits réservés.
-            </p>
-            <div className="flex items-center gap-2 text-[10px] text-gray-400 font-bold uppercase tracking-widest">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> Système de Réservation Actif
-            </div>
-          </div>
-        </div>
-      </footer>
-
+      <Footer />
       <CarModal 
         car={selectedCar} 
         onClose={() => setSelectedCar(null)} 
