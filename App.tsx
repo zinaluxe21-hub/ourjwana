@@ -14,7 +14,6 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import CarDetails from './pages/CarDetails';
 
-// Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   React.useEffect(() => {
@@ -27,14 +26,14 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col selection:bg-primary selection:text-white">
+      <div className="min-h-screen flex flex-col selection:bg-primary selection:text-white bg-[#FDF8F3]">
         <Navbar />
         <main className="flex-grow">
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/fleet" element={<Fleet />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/laflotte" element={<Fleet />} />
+              <Route path="/histoire" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/car/:id" element={<CarDetails />} />
             </Routes>
