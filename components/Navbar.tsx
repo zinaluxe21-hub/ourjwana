@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -14,14 +16,18 @@ const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
+
+  useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
   }, [isMenuOpen]);
 
   const navLinks = [
-    { name: 'Accueil', href: '#home', subtitle: 'Bienvenue' },
-    { name: 'La Flotte', href: '#fleet', subtitle: 'Véhicules' },
-    { name: 'L\'Histoire', href: '#about', subtitle: 'Notre héritage' },
-    { name: 'Contact', href: '#contact', subtitle: 'Support 24/7' },
+    { name: 'Accueil', href: '/', subtitle: 'Bienvenue' },
+    { name: 'La Flotte', href: '/fleet', subtitle: 'Véhicules' },
+    { name: 'L\'Histoire', href: '/about', subtitle: 'Notre héritage' },
+    { name: 'Contact', href: '/contact', subtitle: 'Support 24/7' },
   ];
 
   const menuVariants: Variants = {
@@ -42,7 +48,7 @@ const Navbar: React.FC = () => {
       <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-6 md:px-12 py-4 flex items-center justify-between ${
         isScrolled || isMenuOpen ? 'bg-secondary/95 backdrop-blur-xl shadow-lg py-3' : 'bg-transparent'
       }`}>
-        <a href="#home" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 bg-primary flex items-center justify-center rounded-sm rotate-45 shadow-lg shadow-primary/20 transition-transform group-hover:scale-110 duration-500">
             <span className="text-white -rotate-45 font-bold text-xl">O</span>
           </div>
@@ -52,20 +58,20 @@ const Navbar: React.FC = () => {
             </h1>
             <span className="text-[8px] uppercase tracking-[0.3em] font-bold text-primary/80">Marrakech Excellence</span>
           </div>
-        </a>
+        </Link>
 
         <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
-            <a 
+            <Link 
               key={link.name} 
-              href={link.href} 
+              to={link.href} 
               className={`text-sm font-bold uppercase tracking-widest relative group transition-colors duration-500 ${
                 isScrolled ? 'text-accent' : 'text-white'
               }`}
             >
               {link.name}
-              <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-primary transition-all duration-500 group-hover:w-full"></span>
-            </a>
+              <span className={`absolute -bottom-2 left-0 h-0.5 bg-primary transition-all duration-500 ${location.pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+            </Link>
           ))}
         </div>
 
@@ -93,14 +99,14 @@ const Navbar: React.FC = () => {
               <div className="mt-24 space-y-12">
                 {navLinks.map((link) => (
                   <motion.div key={link.name} variants={itemVariants}>
-                    <a 
-                      href={link.href} 
+                    <Link 
+                      to={link.href} 
                       onClick={() => setIsMenuOpen(false)}
                       className="group flex flex-col"
                     >
                       <span className="text-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-1">{link.subtitle}</span>
                       <h3 className="text-4xl md:text-5xl font-bold text-accent group-hover:text-primary transition-colors">{link.name}</h3>
-                    </a>
+                    </Link>
                   </motion.div>
                 ))}
               </div>

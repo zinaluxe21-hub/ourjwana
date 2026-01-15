@@ -1,13 +1,14 @@
 
 import React from 'react';
 import { Instagram, Facebook, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const navLinks = [
-    { name: 'Accueil', href: '#home' },
-    { name: 'La Flotte', href: '#fleet' },
-    { name: 'Notre Histoire', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Accueil', href: '/' },
+    { name: 'La Flotte', href: '/fleet' },
+    { name: 'Notre Histoire', href: '/about' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -34,7 +35,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-gray-500 hover:text-primary transition-colors text-sm font-medium">{link.name}</a>
+                  <Link to={link.href} className="text-gray-500 hover:text-primary transition-colors text-sm font-medium">{link.name}</Link>
                 </li>
               ))}
             </ul>
