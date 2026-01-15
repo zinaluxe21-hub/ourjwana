@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Phone, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -16,15 +16,17 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Déterminer les couleurs selon la page et le scroll
-  const navBg = isHomePage 
-    ? (isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent')
-    : 'bg-white/95 backdrop-blur-md shadow-md';
+  // Déterminer les styles selon la page et le scroll
+  // Si on est pas sur la home, on force le mode "scrolled" (fond blanc, texte couleur)
+  const showSolidNav = !isHomePage || isScrolled;
+  
+  const navBg = showSolidNav 
+    ? 'bg-white/95 backdrop-blur-md shadow-md py-3' 
+    : 'bg-transparent py-6';
 
-  // Sur la home non-scrolled, le texte est blanc, sinon c'est l'accent (dark blue)
-  const textColor = isHomePage 
-    ? (isScrolled ? 'text-accent' : 'text-white')
-    : 'text-accent';
+  const textColor = showSolidNav 
+    ? 'text-[#C15B36]' // Terracotta Marrakech pour la visibilité
+    : 'text-white';
 
   const navLinks = [
     { label: 'Accueil', path: '/' },
@@ -35,14 +37,14 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-6 md:px-12 py-4 ${navBg}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-6 md:px-12 ${navBg}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-primary rotate-45 flex items-center justify-center rounded-sm">
+            <div className="w-8 h-8 bg-[#C15B36] rotate-45 flex items-center justify-center rounded-sm shadow-lg shadow-[#C15B36]/20">
               <span className="text-white -rotate-45 font-bold">O</span>
             </div>
-            <h1 className={`text-2xl font-serif font-bold tracking-tight ${textColor}`}>
-              Ourjwana <span className="text-primary italic">Car</span>
+            <h1 className={`text-2xl font-serif font-bold tracking-tight ${showSolidNav ? 'text-accent' : 'text-white'}`}>
+              Ourjwana <span className="text-[#C15B36] italic">Car</span>
             </h1>
           </Link>
 
@@ -53,10 +55,10 @@ const Navbar: React.FC = () => {
                 <Link 
                   key={item.label}
                   to={item.path}
-                  className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors relative group ${isActive ? 'text-primary' : textColor} hover:text-primary`}
+                  className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors relative group ${isActive ? 'text-[#C15B36]' : textColor} hover:text-[#C15B36]`}
                 >
                   {item.label}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#C15B36] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                 </Link>
               );
             })}
@@ -65,13 +67,13 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-4">
             <a 
               href="https://wa.me/212600000000" 
-              className="hidden md:flex bg-primary text-white px-8 py-3 rounded-xl font-bold text-[10px] tracking-widest hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
+              className="hidden md:flex bg-[#C15B36] text-white px-8 py-3 rounded-xl font-bold text-[10px] tracking-widest hover:bg-[#a0482b] transition-all shadow-lg shadow-[#C15B36]/20"
             >
-              RESERVER
+              RÉSERVER
             </a>
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)} 
-              className={`p-2 transition-colors ${textColor} hover:text-primary`}
+              className={`p-2 transition-colors ${textColor} hover:text-[#C15B36]`}
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -82,10 +84,10 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[110] bg-secondary flex flex-col p-12 justify-center items-center text-center"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            className="fixed inset-0 z-[110] bg-[#FDF8F3] flex flex-col p-12 justify-center items-center text-center"
           >
             <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 text-accent">
               <X size={40} />
@@ -96,14 +98,14 @@ const Navbar: React.FC = () => {
                   key={item.label}
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`block text-4xl font-serif font-bold ${location.pathname === item.path ? 'text-primary' : 'text-accent'} hover:text-primary transition-colors`}
+                  className={`block text-4xl font-serif font-bold ${location.pathname === item.path ? 'text-[#C15B36]' : 'text-accent'} hover:text-[#C15B36] transition-colors`}
                 >
                   {item.label}
                 </Link>
               ))}
               <div className="pt-12">
-                <p className="text-gray-400 text-xs uppercase tracking-widest mb-2">Conciergerie 24/7 Marrakech</p>
-                <a href="tel:+212600000000" className="text-primary text-2xl font-bold tracking-widest">+212 600 000 000</a>
+                <p className="text-gray-400 text-[10px] uppercase tracking-[0.3em] mb-4">Conciergerie Marrakech 24/7</p>
+                <a href="tel:+212600000000" className="text-[#C15B36] text-2xl font-bold tracking-widest">+212 600 000 000</a>
               </div>
             </div>
           </motion.div>
