@@ -21,9 +21,17 @@ const Navbar: React.FC = () => {
     ? (isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent')
     : 'bg-white/95 backdrop-blur-md shadow-md';
 
+  // Sur la home non-scrolled, le texte est blanc, sinon c'est l'accent (dark blue)
   const textColor = isHomePage 
     ? (isScrolled ? 'text-accent' : 'text-white')
     : 'text-accent';
+
+  const navLinks = [
+    { label: 'Accueil', path: '/' },
+    { label: 'La Flotte', path: '/laflotte' },
+    { label: 'Histoire', path: '/histoire' },
+    { label: 'Contact', path: '/contact' }
+  ];
 
   return (
     <>
@@ -39,21 +47,19 @@ const Navbar: React.FC = () => {
           </Link>
 
           <div className="hidden lg:flex items-center gap-10">
-            {[
-              { label: 'Accueil', path: '/' },
-              { label: 'La Flotte', path: '/laflotte' },
-              { label: 'Histoire', path: '/histoire' },
-              { label: 'Contact', path: '/contact' }
-            ].map((item) => (
-              <Link 
-                key={item.label}
-                to={item.path}
-                className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors relative group ${textColor} hover:text-primary`}
-              >
-                {item.label}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${location.pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-              </Link>
-            ))}
+            {navLinks.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <Link 
+                  key={item.label}
+                  to={item.path}
+                  className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors relative group ${isActive ? 'text-primary' : textColor} hover:text-primary`}
+                >
+                  {item.label}
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                </Link>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-4">
@@ -61,7 +67,7 @@ const Navbar: React.FC = () => {
               href="https://wa.me/212600000000" 
               className="hidden md:flex bg-primary text-white px-8 py-3 rounded-xl font-bold text-[10px] tracking-widest hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
             >
-              BOOK NOW
+              RESERVER
             </a>
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)} 
@@ -85,23 +91,18 @@ const Navbar: React.FC = () => {
               <X size={40} />
             </button>
             <div className="space-y-8">
-              {[
-                { label: 'Accueil', path: '/' },
-                { label: 'La Flotte', path: '/laflotte' },
-                { label: 'Histoire', path: '/histoire' },
-                { label: 'Contact', path: '/contact' }
-              ].map((item) => (
+              {navLinks.map((item) => (
                 <Link 
                   key={item.label}
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block text-4xl font-serif font-bold text-accent hover:text-primary transition-colors"
+                  className={`block text-4xl font-serif font-bold ${location.pathname === item.path ? 'text-primary' : 'text-accent'} hover:text-primary transition-colors`}
                 >
                   {item.label}
                 </Link>
               ))}
               <div className="pt-12">
-                <p className="text-gray-400 text-xs uppercase tracking-widest mb-2">Conciergerie 24/7</p>
+                <p className="text-gray-400 text-xs uppercase tracking-widest mb-2">Conciergerie 24/7 Marrakech</p>
                 <a href="tel:+212600000000" className="text-primary text-2xl font-bold tracking-widest">+212 600 000 000</a>
               </div>
             </div>

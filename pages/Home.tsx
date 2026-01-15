@@ -1,14 +1,26 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Phone, Star, ShieldCheck, Clock, ArrowRight } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Phone, Star, ShieldCheck, Clock, ArrowRight, Car as CarIcon, Gem, Mountain, Users, Trophy } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { carsData } from '../constants/carsData';
 import CarCard from '../components/CarCard';
 
 const Home: React.FC = () => {
-  const featuredCars = carsData.slice(0, 3);
+  const [activeFilter, setActiveFilter] = useState<'Luxe' | 'Économie' | 'SUV' | 'Familiale' | 'Sport'>('Luxe');
   const navigate = useNavigate();
+
+  const categories = [
+    { id: 'Luxe', icon: <Gem size={18} />, label: 'Luxe' },
+    { id: 'SUV', icon: <Mountain size={18} />, label: 'SUV' },
+    { id: 'Économie', icon: <Clock size={18} />, label: 'Éco' },
+    { id: 'Familiale', icon: <Users size={18} />, label: 'Famille' },
+    { id: 'Sport', icon: <Trophy size={18} />, label: 'Sport' },
+  ];
+
+  const filteredCars = useMemo(() => {
+    return carsData.filter(car => car.category === activeFilter).slice(0, 3);
+  }, [activeFilter]);
 
   return (
     <motion.div 
@@ -35,52 +47,80 @@ const Home: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block bg-primary/20 backdrop-blur-md border border-primary/30 px-6 py-2 rounded-full text-xs font-bold tracking-[0.3em] uppercase mb-8">
-              Hospitalité & Prestige
+              L'Excellence à Marrakech
             </span>
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
+            <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight font-serif">
               L'Expérience<br/><span className="text-primary italic">Ourjwana</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-2xl font-light">
-              Découvrez Marrakech et ses environs avec une élégance rare. Une sélection de véhicules pensée pour votre confort.
+              Découvrez la Ville Rouge avec prestige. Une sélection rigoureuse de véhicules pour chaque moment de votre séjour.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/fleet" className="bg-primary text-white px-10 py-4 rounded-full font-bold shadow-xl hover:bg-primary/90 transition-all text-lg">
-                Voir la Flotte
+              <Link to="/laflotte" className="bg-primary text-white px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-[#a0482b] transition-all text-lg">
+                Explorer le Catalogue
               </Link>
-              <a href="https://wa.me/212600000000" className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-full font-bold hover:bg-white/20 transition-all flex items-center gap-3 text-lg">
-                <Phone size={20}/> Réserver Direct
+              <a href="https://wa.me/212600000000" className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-xl font-bold hover:bg-white/20 transition-all flex items-center gap-3 text-lg">
+                <Phone size={20}/> WhatsApp Direct
               </a>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Signature Fleet Teaser */}
+      {/* Interactive Signature Fleet with Categories */}
       <section className="py-32 bg-white">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div className="max-w-2xl">
-              <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Notre Sélection</span>
-              <h2 className="text-5xl font-bold text-accent">La Flotte <span className="text-primary italic">Signature</span></h2>
+          <div className="text-center mb-16">
+            <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Notre Parc Automobile</span>
+            <h2 className="text-5xl font-bold text-accent font-serif mb-8">Collection <span className="text-primary italic">Privée</span></h2>
+            
+            {/* Desktop Filters */}
+            <div className="flex flex-wrap justify-center gap-3 mt-8">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveFilter(cat.id as any)}
+                  className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all border ${
+                    activeFilter === cat.id 
+                    ? 'bg-primary border-primary text-white shadow-xl scale-105' 
+                    : 'bg-white border-gray-100 text-accent hover:border-primary/20 hover:bg-gray-50'
+                  }`}
+                >
+                  <span className={activeFilter === cat.id ? 'text-white' : 'text-primary'}>{cat.icon}</span>
+                  <span className="text-sm tracking-wide">{cat.label}</span>
+                </button>
+              ))}
             </div>
-            <Link to="/fleet" className="flex items-center gap-3 text-primary font-bold hover:gap-5 transition-all group pb-2">
-              Explorer tout le catalogue <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform"/>
-            </Link>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-10">
-            {featuredCars.map(car => (
-              <CarCard 
-                key={car.id} 
-                car={car} 
-                onViewDetails={() => navigate(`/car/${car.id}`)}
-              />
-            ))}
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={activeFilter}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.4 }}
+              className="grid md:grid-cols-3 gap-10"
+            >
+              {filteredCars.map(car => (
+                <CarCard 
+                  key={car.id} 
+                  car={car} 
+                  onViewDetails={() => navigate(`/car/${car.id}`)}
+                />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="mt-16 text-center">
+            <Link to="/laflotte" className="inline-flex items-center gap-3 text-primary font-bold hover:gap-5 transition-all group border-b border-primary pb-2">
+              Voir tous les véhicules disponibles <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform"/>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Brand Values / About Preview */}
+      {/* Brand Values */}
       <section className="py-32 bg-secondary relative overflow-hidden">
         <div className="absolute inset-0 zellige-pattern opacity-5 pointer-events-none" />
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
@@ -105,7 +145,7 @@ const Home: React.FC = () => {
           <div className="space-y-10">
             <header>
               <span className="text-primary font-bold tracking-[0.5em] uppercase text-xs mb-4 block">Notre Philosophie</span>
-              <h2 className="text-5xl md:text-7xl font-bold text-accent leading-tight">L'Art de <br/><span className="text-primary italic">Vous Recevoir</span></h2>
+              <h2 className="text-5xl md:text-7xl font-bold text-accent leading-tight font-serif">L'Art de <br/><span className="text-primary italic">Vous Recevoir</span></h2>
             </header>
             <p className="text-xl text-gray-600 leading-relaxed font-light">
               Chez Ourjwana Car, nous croyons que la liberté de mouvement est le premier luxe d'un voyageur. Nous combinons rigueur internationale et chaleur marocaine.
@@ -127,7 +167,7 @@ const Home: React.FC = () => {
               </div>
             </div>
             <div className="pt-8">
-              <Link to="/about" className="inline-block border-b-2 border-primary pb-2 text-accent font-bold hover:text-primary transition-colors">
+              <Link to="/histoire" className="inline-block border-b-2 border-primary pb-2 text-accent font-bold hover:text-primary transition-colors">
                 En savoir plus sur notre histoire
               </Link>
             </div>
