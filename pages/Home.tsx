@@ -70,14 +70,16 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Interactive Signature Fleet with Categories */}
+      {/* Collection Section avec Zellige Background */}
       <section className="py-32 bg-white relative">
-        <div className="container mx-auto px-6">
+        {/* Motif Zellige discret en arrière-plan de la section */}
+        <div className="absolute inset-0 zellige-pattern opacity-[0.03] pointer-events-none" />
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <span className="text-[#C15B36] font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Parc Automobile</span>
             <h2 className="text-5xl font-bold text-accent font-serif mb-12">Collection <span className="text-[#C15B36] italic">Privée</span></h2>
             
-            {/* Dynamic Filter Tabs */}
             <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-16">
               {categories.map((cat) => (
                 <button
@@ -123,12 +125,12 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Brand Values */}
+      {/* Brand Values avec Zellige Background plus marqué */}
       <section className="py-32 bg-[#FDF8F3] relative overflow-hidden">
-        <div className="absolute inset-0 zellige-pattern opacity-5 pointer-events-none" />
-        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
+        <div className="absolute inset-0 zellige-pattern opacity-10 pointer-events-none" />
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center relative z-10">
           <div className="relative">
-            <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl rotate-2">
+            <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl rotate-2 border-8 border-white">
               <img 
                 src="https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=1200" 
                 className="w-full h-full object-cover"

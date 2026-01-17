@@ -75,15 +75,5 @@ export const carsData: Car[] = [
     features: { transmission: 'Automatique', seats: 2, fuel: 'Essence', ac: true },
     description: 'Pour ceux qui veulent marquer les esprits. Des performances inégalées pour une escapade sur la côte.',
     isAvailable: true
-  },
-  {
-    id: '7',
-    name: 'BYD SEAL U PHEV',
-    category: 'Familiale',
-    pricePerDay: 2500,
-    image: 'https://autohub.ma/wp-content/uploads/2024/11/byd-seal-u-5.jpg',
-    features: { transmission: 'Automatique', seats: 2, fuel: 'Essence', ac: true },
-    description: 'Pour ceux qui veulent marquer les esprits. Des performances inégalées pour une escapade sur la côte.',
-    isAvailable: true
-  },
+  }
 ];
