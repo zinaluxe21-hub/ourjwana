@@ -10,14 +10,14 @@ const Home: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<'All' | 'Luxe' | 'Économie' | 'SUV' | 'Familiale' | 'Sport'>('All');
   const navigate = useNavigate();
 
-  const categories = [
+  const categories = useMemo(() => [
     { id: 'All', icon: <CarIcon size={18} />, label: 'Tous' },
     { id: 'Luxe', icon: <Gem size={18} />, label: 'Luxe' },
     { id: 'SUV', icon: <Mountain size={18} />, label: 'SUV' },
     { id: 'Économie', icon: <Clock size={18} />, label: 'Éco' },
     { id: 'Familiale', icon: <Users size={18} />, label: 'Famille' },
     { id: 'Sport', icon: <Trophy size={18} />, label: 'Sport' },
-  ];
+  ], []);
 
   const filteredCars = useMemo(() => {
     if (activeFilter === 'All') return carsData.slice(0, 6);
@@ -38,6 +38,7 @@ const Home: React.FC = () => {
             src="https://images.unsplash.com/photo-1539419332720-fa3278408f9c?auto=format&fit=crop&q=80&w=2000" 
             className="w-full h-full object-cover" 
             alt="Marrakech Landscape"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-black/40 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
         </div>
@@ -100,7 +101,7 @@ const Home: React.FC = () => {
               key={activeFilter}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
+              exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.4 }}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
             >
@@ -132,6 +133,7 @@ const Home: React.FC = () => {
                 src="https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=1200" 
                 className="w-full h-full object-cover"
                 alt="Ourjwana Heritage"
+                loading="lazy"
               />
             </div>
             <div className="absolute -bottom-10 -right-10 bg-white p-10 rounded-[2rem] shadow-2xl max-w-xs border border-[#C15B36]/10">
@@ -158,14 +160,14 @@ const Home: React.FC = () => {
                   <ShieldCheck size={28}/>
                 </div>
                 <h4 className="text-xl font-bold text-accent">Sérénité</h4>
-                <p className="text-gray-500 text-sm">Assurances complètes et assistance 24/7 partout au Maroc.</p>
+                <p className="text-gray-500 text-sm font-medium">Assurances complètes et assistance 24/7 partout au Maroc.</p>
               </div>
               <div className="space-y-4">
                 <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#C15B36] shadow-sm border border-[#C15B36]/5">
                   <Clock size={28}/>
                 </div>
                 <h4 className="text-xl font-bold text-accent">Ponctualité</h4>
-                <p className="text-gray-500 text-sm">Livraison gratuite à l'aéroport ou à votre Riad en temps record.</p>
+                <p className="text-gray-500 text-sm font-medium">Livraison gratuite à l'aéroport ou à votre Riad en temps record.</p>
               </div>
             </div>
           </div>

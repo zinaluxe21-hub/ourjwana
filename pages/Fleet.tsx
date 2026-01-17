@@ -32,10 +32,10 @@ const Fleet: React.FC = () => {
       className="pt-44 pb-24 container mx-auto px-6"
     >
       <div className="mb-20">
-        <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Notre Sélection</span>
-        <h1 className="text-5xl md:text-7xl font-bold text-accent mb-12">Le Catalogue <span className="text-primary italic">Ourjwana</span></h1>
+        <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Sélection</span>
+        <h1 className="text-5xl md:text-7xl font-bold text-accent mb-12 font-serif">Le Catalogue <span className="text-primary italic">Ourjwana</span></h1>
         
-        <div className="flex overflow-x-auto pb-4 gap-3 no-scrollbar">
+        <div className="flex overflow-x-auto pb-6 gap-3 no-scrollbar">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -47,7 +47,7 @@ const Fleet: React.FC = () => {
               }`}
             >
               <span className={filter === cat.id ? 'text-primary' : 'text-gray-400'}>{cat.icon}</span>
-              <span className="text-sm tracking-wide">{cat.label}</span>
+              <span className="text-xs uppercase tracking-widest">{cat.label}</span>
             </button>
           ))}
         </div>
@@ -73,7 +73,7 @@ const Fleet: React.FC = () => {
         ) : (
           <div className="py-40 text-center flex flex-col items-center">
             <SearchX className="text-primary/10 mb-6" size={80} />
-            <h3 className="text-3xl font-bold text-accent">Aucun véhicule disponible</h3>
+            <h3 className="text-3xl font-bold text-accent font-serif">Aucun véhicule disponible</h3>
             <p className="text-gray-500 mt-2">Nous renouvelons régulièrement notre parc automobile.</p>
           </div>
         )}
