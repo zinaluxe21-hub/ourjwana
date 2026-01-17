@@ -31,19 +31,20 @@ const Fleet: React.FC = () => {
       exit={{ opacity: 0 }} 
       className="pt-44 pb-24 container mx-auto px-6"
     >
-      <div className="mb-20">
+      <div className="mb-20 text-center">
         <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Sélection</span>
         <h1 className="text-5xl md:text-7xl font-bold text-accent mb-12 font-serif">Le Catalogue <span className="text-primary italic">Ourjwana</span></h1>
         
-        <div className="flex overflow-x-auto pb-6 gap-3 no-scrollbar">
+        {/* FIX: Centered Flex-Wrap Categories (No more scroll) */}
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-10">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setFilter(cat.id as any)}
-              className={`flex-shrink-0 flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all border ${
+              className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all border ${
                 filter === cat.id 
                 ? 'bg-accent border-accent text-white shadow-xl scale-105' 
-                : 'bg-white border-gray-100 text-accent hover:border-primary/20 hover:bg-gray-50'
+                : 'bg-white border-gray-100 text-accent hover:border-primary/20 hover:bg-gray-50 shadow-sm'
               }`}
             >
               <span className={filter === cat.id ? 'text-primary' : 'text-gray-400'}>{cat.icon}</span>
