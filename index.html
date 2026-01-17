@@ -19,25 +19,16 @@
             color: #2C3E50;
             margin: 0;
             padding: 0;
-            position: relative;
-        }
-        /* RETOUR DU ZELLIJ GLOBAL */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l15 15-15 15-15-15L30 0zm0 60l15-15-15-15-15 15 15 15zM0 30l15-15 15 15-15 15L0 30zm60 0l-15-15-15 15 15 15 15-15z' fill='%23C15B36' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: -1;
+            /* Motif Zellige forcé sur tout le body avec plus de présence */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l15 15-15 15-15-15L30 0zm0 60l15-15-15-15-15 15 15 15zM0 30l15-15 15 15-15 15L0 30zm60 0l-15-15-15 15 15 15 15-15z' fill='%23C15B36' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-attachment: fixed;
         }
         h1, h2, h3, h4, .serif {
             font-family: 'Playfair Display', serif;
         }
+        /* Classe utilitaire pour des sections spécifiques avec un motif plus sombre si besoin */
         .zellige-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l15 15-15 15-15-15L30 0zm0 60l15-15-15-15-15 15 15 15zM0 30l15-15 15 15-15 15L0 30zm60 0l-15-15-15 15 15 15 15-15z' fill='%23C15B36' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l15 15-15 15-15-15L30 0zm0 60l15-15-15-15-15 15 15 15zM0 30l15-15 15 15-15 15L0 30zm60 0l-15-15-15 15 15 15 15-15z' fill='%23C15B36' fill-opacity='0.12' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
         .no-scrollbar::-webkit-scrollbar {
             display: none;

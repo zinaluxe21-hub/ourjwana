@@ -70,11 +70,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Collection Section avec Zellige Background */}
-      <section className="py-32 bg-white relative">
-        {/* Motif Zellige discret en arrière-plan de la section */}
-        <div className="absolute inset-0 zellige-pattern opacity-[0.03] pointer-events-none" />
-        
+      {/* Collection Section - On laisse le fond transparent pour voir le Zellige du body */}
+      <section className="py-32 bg-transparent relative">
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <span className="text-[#C15B36] font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Parc Automobile</span>
@@ -125,9 +122,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Brand Values avec Zellige Background plus marqué */}
-      <section className="py-32 bg-[#FDF8F3] relative overflow-hidden">
-        <div className="absolute inset-0 zellige-pattern opacity-10 pointer-events-none" />
+      {/* Brand Values */}
+      <section className="py-32 bg-[#FDF8F3]/80 backdrop-blur-sm relative overflow-hidden border-y border-[#C15B36]/10">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center relative z-10">
           <div className="relative">
             <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl rotate-2 border-8 border-white">
