@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -16,20 +15,27 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Logique de style consolidée
+  // LOGIQUE M-CORRIGYA:
+  // Ila ma knach f Home (Fleet/About...), isSolid = TRUE dima.
+  // Ila kna f Home w hbatna b scroll, isSolid = TRUE.
   const isSolid = !isHome || isScrolled;
   
   const navClass = isSolid 
-    ? 'bg-white shadow-md py-3' 
+    ? 'bg-white shadow-md py-3' // Zdt shadow-md bach yban mfroq
     : 'bg-transparent py-6';
 
+  // Hna fin kan l-mochkil: bddlt text-accent b text-[#C15B36]
   const textColorClass = isSolid 
     ? 'text-[#C15B36]' 
     : 'text-white';
 
+  const logoTextClass = isSolid
+    ? 'text-[#2C3E50]' // "Ourjwana" b K7el Charbon bach tban Pro foq lbyed
+    : 'text-white';
+
   const navLinks = [
     { label: 'Accueil', path: '/' },
-    { label: 'La Flotte', path: '/laflotte' },
+    { label: 'La Flotte', path: '/laflotte' }, // T2kd mn had l-path
     { label: 'Histoire', path: '/histoire' },
     { label: 'Contact', path: '/contact' }
   ];
@@ -39,14 +45,18 @@ const Navbar: React.FC = () => {
       <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 px-6 md:px-12 ${navClass}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[#C15B36] rotate-45 flex items-center justify-center rounded-sm shadow-lg shadow-[#C15B36]/20">
-              <span className="text-white -rotate-45 font-bold">O</span>
+            {/* Logo Icon */}
+            <div className={`w-8 h-8 rotate-45 flex items-center justify-center rounded-sm shadow-lg transition-colors duration-300 ${isSolid ? 'bg-[#C15B36] shadow-[#C15B36]/20' : 'bg-white/20 backdrop-blur'}`}>
+              <span className={`-rotate-45 font-bold ${isSolid ? 'text-white' : 'text-white'}`}>O</span>
             </div>
-            <h1 className={`text-2xl font-serif font-bold tracking-tight ${isSolid ? 'text-accent' : 'text-white'}`}>
+            
+            {/* Logo Text - Hna bdltha bach tban wad7a */}
+            <h1 className={`text-2xl font-serif font-bold tracking-tight transition-colors duration-300 ${logoTextClass}`}>
               Ourjwana <span className="text-[#C15B36] italic">Car</span>
             </h1>
           </Link>
 
+          {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-10">
             {navLinks.map((item) => {
               const isActive = location.pathname === item.path;
@@ -63,6 +73,7 @@ const Navbar: React.FC = () => {
             })}
           </div>
 
+          {/* Buttons Right */}
           <div className="flex items-center gap-4">
             <a 
               href="https://wa.me/212600000000" 
@@ -81,6 +92,7 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
@@ -92,7 +104,7 @@ const Navbar: React.FC = () => {
           >
             <button 
               onClick={() => setIsMenuOpen(false)} 
-              className="absolute top-8 right-8 text-accent p-2 hover:rotate-90 transition-transform duration-300"
+              className="absolute top-8 right-8 text-[#C15B36] p-2 hover:rotate-90 transition-transform duration-300"
             >
               <X size={40} />
             </button>
@@ -102,7 +114,7 @@ const Navbar: React.FC = () => {
                   key={item.label}
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`block text-4xl font-serif font-bold ${location.pathname === item.path ? 'text-[#C15B36]' : 'text-accent'} hover:text-[#C15B36] transition-colors`}
+                  className={`block text-4xl font-serif font-bold ${location.pathname === item.path ? 'text-[#C15B36]' : 'text-[#2C3E50]'} hover:text-[#C15B36] transition-colors`}
                 >
                   {item.label}
                 </Link>
