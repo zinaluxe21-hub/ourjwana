@@ -26,7 +26,8 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col selection:bg-primary selection:text-white bg-[#FDF8F3]">
+      {/* On enlève bg-[#FDF8F3] ici pour laisser voir le body background */}
+      <div className="min-h-screen flex flex-col selection:bg-primary selection:text-white bg-transparent">
         <Navbar />
         <main className="flex-grow">
           <AnimatePresence mode="wait">

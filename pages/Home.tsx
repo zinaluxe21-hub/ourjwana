@@ -29,7 +29,7 @@ const Home: React.FC = () => {
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }} 
       exit={{ opacity: 0 }}
-      className="overflow-x-hidden"
+      className="overflow-x-hidden bg-transparent"
     >
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden">
@@ -70,7 +70,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Collection Section - On laisse le fond transparent pour voir le Zellige du body */}
+      {/* Collection Section - Transparent pour voir le Zellij */}
       <section className="py-32 bg-transparent relative">
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
@@ -122,8 +122,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Brand Values */}
-      <section className="py-32 bg-[#FDF8F3]/80 backdrop-blur-sm relative overflow-hidden border-y border-[#C15B36]/10">
+      {/* Brand Values - Un peu de blanc cassé translucide pour la lisibilité */}
+      <section className="py-32 bg-[#FDF8F3]/60 backdrop-blur-sm relative overflow-hidden border-y border-[#C15B36]/10">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center relative z-10">
           <div className="relative">
             <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl rotate-2 border-8 border-white">

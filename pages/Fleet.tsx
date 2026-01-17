@@ -29,7 +29,7 @@ const Fleet: React.FC = () => {
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }} 
       exit={{ opacity: 0 }} 
-      className="pt-44 pb-24 container mx-auto px-6"
+      className="pt-44 pb-24 container mx-auto px-6 bg-transparent"
     >
       <div className="mb-20">
         <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Sélection</span>
