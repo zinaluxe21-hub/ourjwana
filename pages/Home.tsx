@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, ArrowRight, MessageCircle, ShieldCheck, MapPin, Award, Star, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Award, Star, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { carsData, Car } from '../constants/carsData';
 import CarCard from '../components/CarCard';
@@ -44,17 +44,20 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICE SECTION */}
-      <section className="py-32 container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-24 items-center">
-          <div className="relative">
-            <div className="rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
-              <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&q=80&w=1200" alt="Alorjwana VIP Service" className="w-full aspect-[4/5] object-cover" />
+      {/* SERVICE SECTION - FIXED OVERLAP FOR MOBILE */}
+      <section className="py-24 md:py-32 container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <div className="relative pb-24 lg:pb-0">
+            <div className="rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] lg:aspect-auto">
+              <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&q=80&w=1200" alt="Alorjwana VIP Service" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute -bottom-10 -right-10 bg-white p-12 rounded-[2.5rem] shadow-2xl max-w-xs border border-primary/5">
-                <Award size={40} className="text-primary mb-6"/>
-                <h4 className="text-2xl font-serif font-bold text-accent mb-2">Service VIP</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">Nous vous livrons votre voiture à l'aéroport ou directement à votre Riad partout au Maroc.</p>
+            {/* VIP CARD OVERLAP - MOBILE OPTIMIZED */}
+            <div className="absolute -bottom-6 right-0 lg:-bottom-10 lg:-right-10 bg-white p-8 lg:p-12 rounded-[2.5rem] shadow-2xl max-w-[280px] lg:max-w-xs border border-primary/5 z-20">
+                <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-primary/5 flex items-center justify-center text-primary mb-6">
+                   <Award size={32} />
+                </div>
+                <h4 className="text-xl lg:text-2xl font-serif font-bold text-accent mb-3">Service VIP</h4>
+                <p className="text-gray-500 text-xs lg:text-sm leading-relaxed">Nous vous livrons votre voiture à l'aéroport ou directement à votre Riad partout au Maroc.</p>
             </div>
           </div>
           <div className="space-y-12">
@@ -103,10 +106,10 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* EXPERIENCE SECTION - MATCHING YOUR IMAGE EXACTLY */}
-      <section className="py-32">
+      {/* EXPERIENCE SECTION - REDUCED BOTTOM PADDING */}
+      <section className="pt-32 pb-12">
         <div className="container mx-auto px-6">
-           <div className="bg-[#2C3E50] rounded-[3.5rem] p-12 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
+           <div className="bg-[#2C3E50] rounded-[3.5rem] p-10 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
              <div className="max-w-xl text-left">
                <h2 className="text-4xl md:text-7xl font-serif font-bold text-white mb-8 leading-tight">Prêt à Prendre <br/>La Route ?</h2>
                <p className="text-gray-300 text-lg font-light leading-relaxed mb-12">Réservez en 2 minutes via WhatsApp. Notre équipe est à votre écoute pour personnaliser votre expérience.</p>
@@ -121,11 +124,11 @@ const Home: React.FC = () => {
              </div>
              
              <div className="flex flex-col md:flex-row gap-8 lg:gap-12">
-                <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-[2.5rem] text-center w-64">
+                <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-[2.5rem] text-center w-64 shadow-2xl">
                    <h4 className="text-[#C15B36] text-4xl font-bold mb-3">10+</h4>
                    <p className="text-white/40 text-[9px] font-bold uppercase tracking-[0.3em]">ANS D'EXPERTISE</p>
                 </div>
-                <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-[2.5rem] text-center w-64 md:mt-12">
+                <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-[2.5rem] text-center w-64 md:mt-12 shadow-2xl">
                    <h4 className="text-[#C15B36] text-4xl font-bold mb-3">100%</h4>
                    <p className="text-white/40 text-[9px] font-bold uppercase tracking-[0.3em]">VÉHICULES NEUFS</p>
                 </div>
@@ -134,8 +137,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* TESTIMONIALS SECTION - ADDED BACK */}
-      <section className="py-32">
+      {/* TESTIMONIALS SECTION - REDUCED TOP PADDING */}
+      <section className="pt-12 pb-32">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
             <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Satisfaction Client</span>

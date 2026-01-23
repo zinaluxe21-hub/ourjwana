@@ -1,7 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Car as CarIcon, Gauge, Star, LayoutGrid, Heart, Zap, Users, Trophy } from 'lucide-react';
+import { Car as CarIcon, Star, LayoutGrid, Heart, Zap, Users, Trophy } from 'lucide-react';
 import { carsData, Car } from '../constants/carsData';
 import CarCard from '../components/CarCard';
 import CarModal from '../components/CarModal';
@@ -31,9 +31,9 @@ const Fleet: React.FC = () => {
         <h1 className="text-5xl md:text-7xl font-bold text-accent mb-12 font-serif">Collection <span className="text-primary italic">Privée</span></h1>
       </div>
 
-      {/* CATEGORY FILTER - PILL DESIGN (Exactement comme dans votre capture) */}
-      <div className="mb-20 overflow-visible">
-        <div className="flex flex-wrap lg:flex-nowrap items-center gap-4 py-2">
+      {/* CATEGORY FILTER - NO SCROLL, JUST WRAP (Exactement comme dans votre capture) */}
+      <div className="mb-20">
+        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 py-2">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat.id;
             return (
