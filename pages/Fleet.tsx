@@ -1,7 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Car as CarIcon, Gauge, Star, Shield, LayoutGrid, Heart, Zap } from 'lucide-react';
+import { Car as CarIcon, Gauge, Star, LayoutGrid, Heart, Zap, Users, Trophy } from 'lucide-react';
 import { carsData, Car } from '../constants/carsData';
 import CarCard from '../components/CarCard';
 import CarModal from '../components/CarModal';
@@ -11,8 +11,8 @@ const categories = [
   { id: 'ÉCONOMIE', label: 'ÉCO', icon: <Zap size={18}/> },
   { id: 'Luxe', label: 'LUXE', icon: <Star size={18}/> },
   { id: 'SUV', label: 'SUV', icon: <CarIcon size={18}/> },
-  { id: 'FAMILLE', label: 'FAMILLE', icon: <Gauge size={18}/> },
-  { id: 'SPORT', label: 'SPORT', icon: <Heart size={18}/> },
+  { id: 'FAMILLE', label: 'FAMILLE', icon: <Users size={18}/> },
+  { id: 'SPORT', label: 'SPORT', icon: <Trophy size={18}/> },
 ];
 
 const Fleet: React.FC = () => {
@@ -21,7 +21,6 @@ const Fleet: React.FC = () => {
 
   const filteredCars = useMemo(() => {
     if (selectedCategory === 'TOUS') return carsData;
-    // Note: Normalize category comparison for safety
     return carsData.filter(car => car.category.toUpperCase() === selectedCategory.toUpperCase());
   }, [selectedCategory]);
 
@@ -32,18 +31,18 @@ const Fleet: React.FC = () => {
         <h1 className="text-5xl md:text-7xl font-bold text-accent mb-12 font-serif">Collection <span className="text-primary italic">Privée</span></h1>
       </div>
 
-      {/* CATEGORY FILTER - HORIZONTAL SCROLL (Fidèle à l'image fournie) */}
-      <div className="mb-20 overflow-hidden relative">
-        <div className="category-scroll-container no-scrollbar pb-6">
+      {/* CATEGORY FILTER - PILL DESIGN (Exactement comme dans votre capture) */}
+      <div className="mb-20 overflow-visible">
+        <div className="flex flex-wrap lg:flex-nowrap items-center gap-4 py-2">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat.id;
             return (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`flex-shrink-0 flex items-center gap-4 px-10 py-5 rounded-[1.5rem] font-bold text-[11px] tracking-widest uppercase transition-all duration-300 shadow-sm border ${
+                className={`flex items-center gap-3 px-8 py-4 rounded-full font-bold text-[11px] tracking-widest uppercase transition-all duration-300 shadow-sm border ${
                   isActive 
-                  ? 'bg-accent text-white border-accent shadow-2xl shadow-accent/20 scale-105' 
+                  ? 'bg-[#2C3E50] text-white border-[#2C3E50] shadow-xl scale-105' 
                   : 'bg-white text-gray-400 border-gray-100 hover:border-primary/30 hover:text-primary'
                 }`}
               >
@@ -53,8 +52,6 @@ const Fleet: React.FC = () => {
             );
           })}
         </div>
-        {/* Shadow indicators for scroll */}
-        <div className="absolute top-0 right-0 h-full w-20 bg-gradient-to-l from-[#FDF8F3] to-transparent pointer-events-none lg:hidden"></div>
       </div>
 
       {/* CAR GRID */}
