@@ -12,16 +12,18 @@ const CarDetails: React.FC = () => {
 
   if (!car) return <div className="pt-40 text-center h-screen">Véhicule non trouvé.</div>;
 
+  // Standardize brand name and WhatsApp number
   const handleBooking = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Bonjour Ourjwana Car, je souhaite réserver la ${car.name} du ${dates.start} au ${dates.end}.`;
-    window.open(`https://wa.me/212600000000?text=${encodeURIComponent(text)}`, '_blank');
+    const text = `Bonjour Alorjwana Car, je souhaite réserver la ${car.name} du ${dates.start} au ${dates.end}.`;
+    window.open(`https://wa.me/212786455138?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="pt-24 min-h-screen zellige-pattern">
       <div className="container mx-auto px-6 py-12">
-        <Link to="/fleet" className="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all mb-12">
+        {/* Corrected route from /fleet to /laflotte to match App.tsx */}
+        <Link to="/laflotte" className="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all mb-12">
           <ChevronLeft size={20} /> Retour à la flotte
         </Link>
 
@@ -54,6 +56,7 @@ const CarDetails: React.FC = () => {
               <div className="flex justify-between items-center mb-10">
                 <div>
                   <p className="text-xs font-bold text-gray-400 uppercase mb-1">Tarif Journalier</p>
+                  {/* Fixed pricePerDay property error after adding it to the Car interface */}
                   <p className="text-4xl font-bold text-primary">{car.pricePerDay} <span className="text-sm text-accent font-normal">DH / Jour</span></p>
                 </div>
                 <div className="text-right">

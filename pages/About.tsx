@@ -11,7 +11,7 @@ const About: React.FC = () => {
           <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Notre Héritage</span>
           <h1 className="text-5xl md:text-7xl font-bold text-accent mb-8">L'Art de Recevoir <span className="text-primary italic">Marrakech</span></h1>
           <p className="text-xl text-gray-500 leading-relaxed font-light">
-            Ourjwana Car est née de la passion pour notre ville et de la volonté de proposer une expérience de mobilité qui reflète la noblesse de l'hospitalité marocaine.
+            Alorjwana Car est née de la passion pour notre ville et de la volonté de proposer une expérience de mobilité qui reflète la noblesse de l'hospitalité marocaine.
           </p>
         </div>
 

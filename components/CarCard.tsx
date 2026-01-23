@@ -10,82 +10,45 @@ interface CarCardProps {
 }
 
 const CarCard: React.FC<CarCardProps> = ({ car, onViewDetails }) => {
-  const whatsappLink = `https://wa.me/212600000000?text=Bonjour Ourjwana Car, je souhaite réserver la ${car.name}.`;
+  const whatsappLink = `https://wa.me/212786455138?text=Bonjour Alorjwana Car, je souhaite réserver la ${car.name}.`;
 
   return (
-    <motion.div 
-      layout
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full"
-    >
-      {/* Image Container avec hauteur fixe h-64 */}
-      <div className="relative h-64 overflow-hidden bg-gray-100">
-        <img 
-          src={car.image} 
-          alt={car.name} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        
-        {/* Floating Category Tag */}
+    <motion.div layout initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full">
+      <div className="relative h-60 overflow-hidden bg-gray-100">
+        <img src={car.image} alt={car.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
         <div className="absolute top-4 right-4">
           <span className="bg-accent/90 backdrop-blur-sm px-4 py-1.5 rounded-lg text-[10px] font-bold text-white uppercase tracking-widest">
-            {car.category === 'Luxe' ? '✨ ' + car.category : car.category}
+            {car.category}
           </span>
         </div>
-
-        {/* Overlay au hover */}
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-           <button 
-             onClick={onViewDetails}
-             className="bg-white text-accent px-6 py-3 rounded-full flex items-center gap-2 text-xs font-bold shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
-           >
-             <Eye size={16}/> VOIR LE VÉHICULE
+           <button onClick={onViewDetails} className="bg-white text-accent px-6 py-3 rounded-full flex items-center gap-2 text-xs font-bold shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-all">
+             <Eye size={16}/> DÉTAILS
            </button>
         </div>
       </div>
 
-      {/* Content */}
       <div className="p-7 flex flex-col flex-grow">
-        <div className="flex justify-between items-start mb-4">
-          <h3 className="text-xl font-serif font-bold text-accent leading-tight group-hover:text-primary transition-colors">{car.name}</h3>
-          <div className="text-right">
-            <span className="block text-primary font-bold text-2xl tracking-tight">{car.pricePerDay} DH</span>
-            <span className="text-[10px] text-gray-400 uppercase font-bold tracking-[0.1em]">/ jour</span>
-          </div>
-        </div>
+        <h3 className="text-xl font-serif font-bold text-accent mb-4 group-hover:text-primary transition-colors">{car.name}</h3>
         
-        {/* Technical Specs row (Icons) */}
         <div className="flex items-center gap-4 mb-8 border-y border-gray-50 py-4">
            <div className="flex items-center gap-1.5">
-             <div className="text-gray-400"><Gauge size={14}/></div>
-             <span className="text-[11px] font-semibold text-gray-600 uppercase">{car.features.transmission.slice(0, 4)}.</span>
+             <Gauge size={14} className="text-gray-400"/>
+             <span className="text-[11px] font-semibold text-gray-600 uppercase">{car.features.transmission}</span>
            </div>
            <div className="flex items-center gap-1.5">
-             <div className="text-gray-400"><Users size={14}/></div>
+             <Users size={14} className="text-gray-400"/>
              <span className="text-[11px] font-semibold text-gray-600">{car.features.seats} PLACES</span>
            </div>
            <div className="flex items-center gap-1.5">
-             <div className="text-gray-400"><Fuel size={14}/></div>
+             <Fuel size={14} className="text-gray-400"/>
              <span className="text-[11px] font-semibold text-gray-600 uppercase">{car.features.fuel}</span>
            </div>
         </div>
 
-        {/* Buttons Action */}
         <div className="grid grid-cols-2 gap-3 mt-auto">
-          <button 
-            onClick={onViewDetails}
-            className="py-3.5 rounded-xl border border-gray-200 text-accent font-bold text-[10px] tracking-widest hover:bg-gray-50 transition-all uppercase"
-          >
-            Détails
-          </button>
-          <a 
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-primary text-white py-3.5 rounded-xl font-bold text-[10px] tracking-widest hover:bg-[#a0482b] transition-all flex items-center justify-center gap-2 shadow-md shadow-primary/10 uppercase"
-          >
+          <button onClick={onViewDetails} className="py-3.5 rounded-xl border border-gray-200 text-accent font-bold text-[10px] tracking-widest hover:bg-gray-50 transition-all uppercase">Détails</button>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="bg-primary text-white py-3.5 rounded-xl font-bold text-[10px] tracking-widest hover:bg-[#a0482b] transition-all flex items-center justify-center gap-2 shadow-md uppercase">
             <MessageCircle size={14} /> Réserver
           </a>
         </div>
