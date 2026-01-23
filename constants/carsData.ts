@@ -21,7 +21,7 @@ export const carsData: Car[] = [
     id: 'logan',
     name: 'Dacia Logan',
     category: 'ÉCONOMIE',
-    image: 'https://cdn.group.renault.com/dac/master/dacia-new-identities/cars/logan/logan-intro.jpg.ximg.l_12_m.smart.jpg',
+    image: 'https://leasingoperational.com/wp-content/uploads/2022/03/Dacia-Logan-Alb-2021.jpg',
     pricePerDay: 250,
     features: { transmission: 'Manuelle', seats: 5, fuel: 'Diesel', ac: true },
     description: 'La fiabilité Dacia au service de vos trajets. Idéale pour les longs parcours avec une consommation de diesel optimisée.'
@@ -30,7 +30,7 @@ export const carsData: Car[] = [
     id: 'sandero',
     name: 'Dacia Sandero Stepway',
     category: 'ÉCONOMIE',
-    image: 'https://cdn.group.renault.com/dac/master/dacia-new-identities/cars/sandero-stepway/stepway-intro.jpg.ximg.l_12_m.smart.jpg',
+    image: 'https://www.leguideauto.ma/contents/cars/pictures/2021/12/large/SvmtWqFZflWrPiO5IK1UYKOTxkx7xVi8UDonOAK5.webp',
     pricePerDay: 300,
     features: { transmission: 'Manuelle', seats: 5, fuel: 'Diesel', ac: true },
     description: 'Le crossover citadin par excellence. Robuste, spacieux et prêt pour toutes vos aventures marocaines.'
@@ -39,7 +39,7 @@ export const carsData: Car[] = [
     id: 'corsa',
     name: 'Opel Corsa',
     category: 'ÉCONOMIE',
-    image: 'https://www.opel.ma/content/dam/opel/morocco/master/vehicles/corsa/corsa-launch/highlights/corsa-launch-highlights-desktop.jpg',
+    image: 'https://venture-mobility.ma/__media/6839bd204c918..png',
     pricePerDay: 350,
     features: { transmission: 'Manuelle', seats: 5, fuel: 'Diesel', ac: true },
     description: 'Confort allemand et design moderne. Une citadine dynamique pour vos déplacements urbains et autoroutiers.'
@@ -48,7 +48,7 @@ export const carsData: Car[] = [
     id: 'i10',
     name: 'Hyundai i10',
     category: 'ÉCONOMIE',
-    image: 'https://www.hyundai.com/content/dam/hyundai/ww/en/images/find-a-car/i10/highlights/hyundai-i10-exterior-highlights-01-pc.jpg',
+    image: 'https://im.qccdn.fr/node/actualite-hyundai-i10-premieres-impressions-11137/inline-14891.jpg',
     pricePerDay: 300,
     features: { transmission: 'Automatique', seats: 5, fuel: 'Essence', ac: true },
     description: 'Petite par la taille, grande par le confort. Transmission automatique fluide pour une conduite sans stress en ville.'
@@ -57,7 +57,7 @@ export const carsData: Car[] = [
     id: 'i20',
     name: 'Hyundai i20 avec Toit',
     category: 'ÉCONOMIE',
-    image: 'https://www.hyundai.com/content/dam/hyundai/ww/en/images/find-a-car/i20/exterior/hyundai-i20-exterior-02-pc.jpg',
+    image: 'https://car360.ma/wp-content/uploads/2025/07/208-gris-410x208.jpg',
     pricePerDay: 350,
     features: { transmission: 'Automatique', seats: 5, fuel: 'Essence', ac: true, extra: 'Toit Ouvrant' },
     description: 'Style et modernité. Profitez de la lumière du Maroc avec son toit ouvrant et son équipement premium.'
@@ -66,7 +66,7 @@ export const carsData: Car[] = [
     id: 'accent',
     name: 'Hyundai Accent',
     category: 'ÉCONOMIE',
-    image: 'https://www.hyundai.com/content/dam/hyundai/ww/en/images/find-a-car/accent/exterior/hyundai-accent-exterior-01-pc.jpg',
+    image: 'https://static.oneclickdrive.com/car-for-rent/mobile/Hyundai_Accent_2023_31767_31767_25886794520-1_small.jpg',
     pricePerDay: 400,
     features: { transmission: 'Automatique', seats: 5, fuel: 'Essence', ac: true },
     description: 'Berline élégante offrant une tenue de route irréprochable. Le choix parfait pour allier prestige et économie.'
@@ -75,7 +75,7 @@ export const carsData: Car[] = [
     id: 'tucson',
     name: 'Hyundai Tucson avec Toit',
     category: 'SUV',
-    image: 'https://www.hyundai.com/content/dam/hyundai/ww/en/images/find-a-car/tucson-2020/exterior/hyundai-tucson-exterior-01-pc.jpg',
+    image: 'https://dmassets.hyundai.com/is/image/hyundaiautoever/Hyundai_TUCSON_Hybrid_MY25_2024',
     pricePerDay: 700,
     features: { transmission: 'Automatique', seats: 5, fuel: 'Diesel', ac: true, extra: 'Toit Ouvrant' },
     description: 'SUV de luxe. Puissance, confort et panoramique. Vivez une expérience de conduite supérieure sur les routes du Royaume.'
