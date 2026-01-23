@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alorjwana Car | Location de voitures au Maroc</title>
+    <title>Alorjwana Car | L'Excellence Automobile au Maroc</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #C15B36;
@@ -21,7 +21,7 @@
             padding: 0;
             overflow-x: hidden;
         }
-        /* MOTIF ZELLIGE ÉTOILÉ (Girih) - Fidèle à l'image fournie */
+        /* LE VRAI MOTIF ZELLIGE GIRIH - Fidèle à l'image */
         body::before {
             content: "";
             position: fixed;
@@ -29,16 +29,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Motif d'étoiles entrelacées avec opacité réduite à 0.05 pour la finesse */
-            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0l10 30h30L55 50l10 30-25-20-25 20 10-30L0 30h30z' fill='none' stroke='%23C15B36' stroke-opacity='0.05' stroke-width='0.5'/%3E%3Cpath d='M0 0l5 15h15L8 25l5 15-13-10-13 10 5-15-12-10h15z' fill='none' stroke='%23C15B36' stroke-opacity='0.05' stroke-width='0.5'/%3E%3Cpath d='M80 80l-5-15h-15l12-10-5-15 13 10 13-10-5 15 12 10h-15z' fill='none' stroke='%23C15B36' stroke-opacity='0.05' stroke-width='0.5'/%3E%3Cpath d='M0 80l5-15h15l-12-10 5-15-13 10-13-10 5 15-12 10h15z' fill='none' stroke='%23C15B36' stroke-opacity='0.05' stroke-width='0.5'/%3E%3Cpath d='M80 0l-5 15h-15l12 10-5 15 13-10 13 10-5-15 12-10h-15z' fill='none' stroke='%23C15B36' stroke-opacity='0.05' stroke-width='0.5'/%3E%3C/svg%3E");
+            /* Motif géométrique complexe entrelacé (étoiles de 8) */
+            background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C15B36' stroke-width='0.4' stroke-opacity='0.04'%3E%3Cpath d='M60 0 L75 15 L105 15 L105 45 L120 60 L105 75 L105 105 L75 105 L60 120 L45 105 L15 105 L15 75 L0 60 L15 45 L15 15 L45 15 Z'/%3E%3Cpath d='M60 20 L70 30 L90 30 L90 50 L100 60 L90 70 L90 90 L70 90 L60 100 L50 90 L30 90 L30 70 L20 60 L30 50 L30 30 L50 30 Z'/%3E%3Cpath d='M0 0 L20 20 M120 0 L100 20 M120 120 L100 100 M0 120 L20 100'/%3E%3C/g%3E%3C/svg%3E");
             z-index: -1;
             pointer-events: none;
         }
         h1, h2, h3, h4, .serif {
             font-family: 'Playfair Display', serif;
         }
-        .zellige-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l5 15h15L28 25l5 15-13-10-13 10 5-15L0 15h15z' fill='none' stroke='%23C15B36' stroke-opacity='0.03' stroke-width='0.5'/%3E%3C/svg%3E");
+        .text-gradient {
+            background: linear-gradient(to right, #2C3E50, #C15B36);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
