@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -22,35 +22,36 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 px-6 md:px-12 ${isSolid ? 'bg-white shadow-md py-3' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 px-6 md:px-12 ${isSolid ? 'bg-white shadow-md py-4' : 'bg-transparent py-8'}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[#C15B36] rotate-45 flex items-center justify-center rounded-sm shadow-lg">
-              <span className="text-white -rotate-45 font-bold">A</span>
+            <div className="w-9 h-9 bg-primary rotate-45 flex items-center justify-center rounded-sm shadow-xl">
+              <span className="text-white -rotate-45 font-bold text-xl">A</span>
             </div>
-            <h1 className={`text-2xl font-serif font-bold tracking-tight ${isSolid ? 'text-[#2C3E50]' : 'text-white'}`}>
-              Alorjwana <span className="text-[#C15B36] italic">Car</span>
+            <h1 className={`text-2xl font-serif font-bold tracking-tighter ${isSolid ? 'text-accent' : 'text-white'}`}>
+              Alorjwana <span className="text-primary italic">Car</span>
             </h1>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-10">
-            {[{ label: 'Accueil', path: '/' }, { label: 'La Flotte', path: '/laflotte' }, { label: 'Contact', path: '/contact' }].map((item) => {
+          <div className="hidden lg:flex items-center gap-12">
+            {[{ label: 'ACCUEIL', path: '/' }, { label: 'LA FLOTTE', path: '/laflotte' }, { label: 'CONTACT', path: '/contact' }].map((item) => {
               const isActive = location.pathname === item.path;
               return (
-                <Link key={item.label} to={item.path} className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors relative group ${isSolid ? (isActive ? 'text-[#C15B36]' : 'text-[#2C3E50]') : 'text-white'} hover:text-[#C15B36]`}>
+                <Link key={item.label} to={item.path} className={`text-[10px] font-bold tracking-[0.3em] transition-all relative group ${isSolid ? (isActive ? 'text-primary' : 'text-accent') : 'text-white'} hover:text-primary`}>
                   {item.label}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#C15B36] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                  <span className={`absolute -bottom-2 left-0 h-0.5 bg-primary transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                 </Link>
               );
             })}
           </div>
 
-          <div className="flex items-center gap-4">
-            <a href="tel:+212664739991" className={`hidden md:flex items-center gap-2 font-bold text-xs ${isSolid ? 'text-accent' : 'text-white'}`}>
-              <Phone size={14} className="text-primary"/> +212 664-739991
-            </a>
-            <a href="https://wa.me/212786455138" className="bg-[#C15B36] text-white px-8 py-3 rounded-xl font-bold text-[10px] tracking-widest hover:bg-[#a0482b] transition-all shadow-lg">RÉSERVER</a>
-            <button onClick={() => setIsMenuOpen(true)} className={`lg:hidden p-2 transition-colors ${isSolid ? 'text-[#C15B36]' : 'text-white'}`}>
+          <div className="flex items-center gap-6">
+            <div className={`hidden xl:flex flex-col items-end ${isSolid ? 'text-accent' : 'text-white'}`}>
+               <span className="text-[8px] font-bold uppercase tracking-widest text-primary">Contact Direct</span>
+               <a href="tel:+212664739991" className="text-sm font-bold">+212 664-739991</a>
+            </div>
+            <a href="https://wa.me/212786455138" className="bg-primary text-white px-10 py-4 rounded-xl font-bold text-[10px] tracking-[0.2em] hover:bg-[#a0482b] transition-all shadow-xl shadow-primary/20 uppercase">RÉSERVER</a>
+            <button onClick={() => setIsMenuOpen(true)} className={`lg:hidden p-2 transition-colors ${isSolid ? 'text-primary' : 'text-white'}`}>
               <Menu size={28} />
             </button>
           </div>
@@ -59,19 +60,22 @@ const Navbar: React.FC = () => {
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div initial={{ opacity: 0, x: '100%' }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: '100%' }} className="fixed inset-0 z-[110] bg-[#FDF8F3] flex flex-col p-12 justify-center items-center text-center">
-            <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 text-[#2C3E50] p-2 hover:rotate-90 transition-all">
+          <motion.div initial={{ opacity: 0, x: '100%' }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: '100%' }} className="fixed inset-0 z-[110] bg-secondary flex flex-col p-12 justify-center items-center text-center">
+            <button onClick={() => setIsMenuOpen(false)} className="absolute top-10 right-10 text-accent p-2 hover:rotate-90 transition-all">
               <X size={40} />
             </button>
-            <div className="space-y-8">
-              {[{ label: 'Accueil', path: '/' }, { label: 'La Flotte', path: '/laflotte' }, { label: 'Contact', path: '/contact' }].map((item) => (
-                <Link key={item.label} to={item.path} onClick={() => setIsMenuOpen(false)} className={`block text-4xl font-serif font-bold ${location.pathname === item.path ? 'text-[#C15B36]' : 'text-[#2C3E50]'} hover:text-[#C15B36] transition-colors`}>
+            <div className="space-y-10">
+              {[{ label: 'ACCUEIL', path: '/' }, { label: 'LA FLOTTE', path: '/laflotte' }, { label: 'CONTACT', path: '/contact' }].map((item) => (
+                <Link key={item.label} to={item.path} onClick={() => setIsMenuOpen(false)} className={`block text-5xl font-serif font-bold ${location.pathname === item.path ? 'text-primary' : 'text-accent'} hover:text-primary transition-colors`}>
                   {item.label}
                 </Link>
               ))}
-              <div className="pt-12 border-t border-[#C15B36]/10">
-                <p className="text-gray-400 text-[10px] uppercase tracking-[0.3em] mb-4 font-bold">Contact Direct</p>
-                <a href="tel:+212664739991" className="text-[#C15B36] text-2xl font-bold tracking-widest">+212 664-739991</a>
+              <div className="pt-16 border-t border-primary/10">
+                <p className="text-gray-400 text-[10px] uppercase tracking-[0.5em] mb-6 font-bold">Besoin d'aide ?</p>
+                <div className="space-y-4">
+                  <a href="tel:+212664739991" className="block text-2xl font-bold text-accent">+212 664-739991</a>
+                  <a href="https://wa.me/212786455138" className="inline-flex items-center gap-3 text-primary font-bold text-lg"><MessageCircle size={20}/> WhatsApp Direct</a>
+                </div>
               </div>
             </div>
           </motion.div>
