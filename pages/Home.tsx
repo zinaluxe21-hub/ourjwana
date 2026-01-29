@@ -1,5 +1,5 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Award, CheckCircle2, LayoutGrid, Zap, Car as CarIcon, Users, Trophy, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -28,6 +28,15 @@ const DEFAULT_MSG = encodeURIComponent("Bonjour Alorjwana Car, je souhaite rése
 const Home: React.FC = () => {
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
   const [selectedCategory, setSelectedCategory] = useState('TOUS');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Détection du mobile pour désactiver toute logique complexe
+  useEffect(() => {
+    const checkSize = () => setIsMobile(window.innerWidth < 1024);
+    checkSize();
+    window.addEventListener('resize', checkSize);
+    return () => window.removeEventListener('resize', checkSize);
+  }, []);
 
   const filteredCars = useMemo(() => {
     if (selectedCategory === 'TOUS') return carsData;
@@ -35,16 +44,16 @@ const Home: React.FC = () => {
   }, [selectedCategory]);
 
   return (
-    <div className="bg-transparent w-full">
+    <div className="bg-transparent w-full touch-pan-y overflow-visible">
       {/* HERO SECTION */}
-      <section className="relative min-h-[600px] lg:h-[90vh] flex items-center overflow-hidden touch-pan-y">
+      <section className="relative min-h-[600px] lg:h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover" alt="Luxury Car Morocco" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
         </div>
         
         <div className="relative container mx-auto px-6 z-10 text-white py-20 lg:py-0">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <motion.div initial={isMobile ? {} : { opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex items-center gap-3 mb-6">
               <span className="w-8 h-[1px] bg-primary"></span>
               <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-primary">Prestige & Excellence</span>
@@ -68,13 +77,13 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICE VIP / NOTRE PROMESSE SECTION - S7I7: SIMPLE STACK ON MOBILE (Step 3) */}
-      <section className="relative h-auto py-16 md:py-32 overflow-visible bg-transparent touch-pan-y">
+      {/* SERVICE VIP / NOTRE PROMESSE SECTION - CONDITIONAL RENDERING TO FIX SCROLL TRAP */}
+      <section className={`relative py-16 lg:py-32 bg-transparent overflow-visible touch-pan-y`}>
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             
-            {/* Image side - Stacks nicely on mobile */}
-            <div className="w-full relative order-2 lg:order-1">
+            {/* Image side - Static on mobile, potentially animated on desktop */}
+            <div className="w-full relative">
               <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] md:h-[650px] z-0">
                 <img 
                   src="/myphoto.jpg" 
@@ -83,8 +92,9 @@ const Home: React.FC = () => {
                   onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200'; }}
                 />
               </div>
-              {/* Badge Overlapping - Mobile friendly spacing */}
-              <div className="relative -mt-16 mx-4 lg:mx-0 lg:absolute lg:mt-0 lg:-bottom-10 lg:-right-10 bg-white p-8 lg:p-14 rounded-[2rem] lg:rounded-[3.5rem] shadow-2xl lg:max-w-sm border border-primary/5 z-10 transition-all">
+              
+              {/* Overlay Badge */}
+              <div className="relative -mt-20 mx-4 lg:mx-0 lg:absolute lg:mt-0 lg:-bottom-10 lg:-right-10 bg-white p-8 lg:p-14 rounded-[2.5rem] lg:rounded-[3.5rem] shadow-2xl lg:max-w-sm border border-primary/5 z-10">
                   <div className="w-12 h-12 lg:w-20 lg:h-20 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6">
                      <Award size={32} className="lg:w-10 lg:h-10" />
                   </div>
@@ -95,20 +105,20 @@ const Home: React.FC = () => {
               </div>
             </div>
             
-            {/* Text side - Vertical list on mobile */}
-            <div className="space-y-12 w-full order-1 lg:order-2">
+            {/* Content side - Pure static vertical list */}
+            <div className="space-y-12 w-full pt-10 lg:pt-0">
               <div className="text-center lg:text-left">
                 <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Promesse</span>
                 <h2 className="text-4xl md:text-7xl font-serif font-bold text-accent leading-tight">L'Engagement <br/><span className="text-primary italic">Qualité</span></h2>
               </div>
-              <div className="space-y-8 md:space-y-10">
+              <div className="space-y-10">
                 {[
                   { title: "Partout au Maroc", desc: "Casablanca, Marrakech, Tanger... Nous couvrons tout le territoire.", icon: <MapPin size={24}/> },
                   { title: "Transparence Totale", desc: "Pas de frais cachés. Prix fixes et contrats clairs dès le départ.", icon: <CheckCircle2 size={24}/> },
                   { title: "Support 24h/7", desc: "Une assistance routière et commerciale à votre écoute à tout moment.", icon: <ShieldCheck size={24}/> }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6 items-center group">
-                    <div className="w-14 h-14 flex-shrink-0 bg-white shadow-lg rounded-2xl flex items-center justify-center text-primary border border-primary/5 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <div className="w-14 h-14 flex-shrink-0 bg-white shadow-lg rounded-2xl flex items-center justify-center text-primary border border-primary/5 lg:group-hover:bg-primary lg:group-hover:text-white transition-all duration-300">
                       {item.icon}
                     </div>
                     <div>
@@ -124,7 +134,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* FLOTTE SECTION */}
-      <section className="py-24 md:py-32 bg-accent/5 backdrop-blur-sm relative border-y border-primary/5 touch-pan-y">
+      <section className="py-24 md:py-32 bg-accent/5 backdrop-blur-sm relative border-y border-primary/5">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Parc Automobile</span>
@@ -156,7 +166,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* REVIEWS SECTION */}
-      <section className="py-24 md:py-32 touch-pan-y">
+      <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
              <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Témoignages</span>
@@ -166,7 +176,7 @@ const Home: React.FC = () => {
             {reviews.map((rev, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={isMobile ? {} : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
@@ -190,7 +200,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* FOOTER CTA */}
-      <section className="py-24 container mx-auto px-6 touch-pan-y">
+      <section className="py-24 container mx-auto px-6">
         <div className="bg-accent rounded-[3rem] md:rounded-[4rem] p-10 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl">
           <div className="max-w-xl text-center lg:text-left z-10">
             <h2 className="text-4xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">Prêt à Prendre <br/><span className="text-primary italic">La Route ?</span></h2>
