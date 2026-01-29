@@ -62,12 +62,12 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICE VIP SECTION - FIXED MOBILE SCROLL BUG */}
-      <section className="py-24 md:py-40 container mx-auto px-6">
+      {/* SERVICE VIP SECTION - SOLUTION MOBILE STACKED FLOW */}
+      <section className="py-20 md:py-40 container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          <div className="relative mb-32 lg:mb-0">
-            {/* Image Container - No more fixed height on mobile */}
-            <div className="rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white relative z-0 aspect-[4/5] md:aspect-auto md:h-[600px]">
+          <div className="flex flex-col">
+            {/* Image Container */}
+            <div className="rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white relative z-0 aspect-[4/5] md:aspect-auto md:h-[600px] w-full">
               <img 
                 src="/myphoto.jpg" 
                 alt="Alorjwana VIP Service" 
@@ -76,8 +76,8 @@ const Home: React.FC = () => {
               />
             </div>
             
-            {/* Service Card - Positioned carefully to not block scroll */}
-            <div className="absolute -bottom-24 left-4 right-4 md:left-auto md:-bottom-10 md:-right-10 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10">
+            {/* Service Card - Relative with negative margin on mobile to fix scroll bug */}
+            <div className="relative -mt-20 md:absolute md:mt-0 md:-bottom-10 md:-right-10 mx-4 md:mx-0 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10">
                 <div className="w-12 h-12 md:w-20 md:h-20 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6 md:mb-8">
                    <Award size={32} className="md:w-10 md:h-10" />
                 </div>
@@ -88,7 +88,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           
-          <div className="space-y-12 mt-32 lg:mt-0">
+          <div className="space-y-12 mt-12 lg:mt-0">
             <div className="max-w-md">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Promesse</span>
               <h2 className="text-4xl md:text-7xl font-serif font-bold text-accent leading-tight">L'Engagement <br/><span className="text-primary italic">Qualité</span></h2>
