@@ -26,10 +26,10 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      {/* S7I7: min-h-screen w-full overflow-x-hidden sans h-screen fixe */}
-      <div className="relative min-h-screen w-full flex flex-col selection:bg-primary selection:text-white bg-transparent overflow-x-hidden">
+      {/* WRAPPER S7I7: Pas de overflow-hidden ici, min-h-screen pour le sticky footer */}
+      <div className="relative min-h-screen w-full flex flex-col selection:bg-primary selection:text-white bg-transparent">
         <Navbar />
-        <main className="flex-grow w-full relative touch-pan-y">
+        <main className="flex-grow w-full relative">
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<Home />} />

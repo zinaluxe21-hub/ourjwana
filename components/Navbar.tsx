@@ -18,6 +18,15 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Bloquer le scroll du body uniquement quand le menu est ouvert
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isMenuOpen]);
+
   const isSolid = !isHome || isScrolled;
   const defaultWhatsappMsg = encodeURIComponent("Bonjour Alorjwana Car, je souhaite réserver une voiture");
   const defaultWhatsappLink = `https://wa.me/212786455138?text=${defaultWhatsappMsg}`;
@@ -62,7 +71,12 @@ const Navbar: React.FC = () => {
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div initial={{ opacity: 0, x: '100%' }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: '100%' }} className="fixed inset-0 z-[110] bg-secondary flex flex-col p-12 justify-center items-center text-center">
+          <motion.div 
+            initial={{ opacity: 0, x: '100%' }} 
+            animate={{ opacity: 1, x: 0 }} 
+            exit={{ opacity: 0, x: '100%' }} 
+            className="fixed inset-0 z-[110] bg-secondary flex flex-col p-12 justify-center items-center text-center"
+          >
             <button onClick={() => setIsMenuOpen(false)} className="absolute top-10 right-10 text-accent p-2 hover:rotate-90 transition-all">
               <X size={40} />
             </button>
