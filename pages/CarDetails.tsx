@@ -45,7 +45,9 @@ const CarDetails: React.FC = () => {
 
           <div className="flex flex-col">
             <span className="text-primary font-bold uppercase tracking-[0.4em] text-xs mb-4 block">{car.category}</span>
-            <h1 className="text-5xl md:text-7xl font-bold text-accent mb-8 leading-tight">{car.name}</h1>
+            <h1 className="text-5xl md:text-7xl font-bold text-accent mb-2 leading-tight">{car.name}</h1>
+            <p className="text-2xl md:text-3xl font-bold text-primary mb-8">{car.pricePerDay} € <span className="text-sm text-accent font-normal">/ Jour</span></p>
+            
             <p className="text-xl text-gray-600 italic leading-relaxed mb-12 border-l-4 border-primary/20 pl-6">
               "{car.description}"
             </p>
@@ -54,8 +56,7 @@ const CarDetails: React.FC = () => {
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16" />
               <div className="flex justify-between items-center mb-10">
                 <div>
-                  <p className="text-xs font-bold text-gray-400 uppercase mb-1">Tarif Journalier</p>
-                  <p className="text-4xl font-bold text-primary">{car.pricePerDay} <span className="text-sm text-accent font-normal">€ / Jour</span></p>
+                  <h4 className="font-bold text-accent uppercase text-xs tracking-widest">Réserver ce véhicule</h4>
                 </div>
                 <div className="text-right">
                   <p className="text-[10px] text-green-600 font-bold uppercase flex items-center justify-end gap-1">

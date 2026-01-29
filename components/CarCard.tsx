@@ -48,7 +48,8 @@ const CarCard: React.FC<CarCardProps> = ({ car, onViewDetails }) => {
         <div className="flex justify-between items-start mb-6">
           <div>
             <span className="text-primary font-bold uppercase tracking-[0.3em] text-[8px] mb-2 block">{car.category}</span>
-            <h3 className="text-2xl font-serif font-bold text-accent group-hover:text-primary transition-colors">{car.name}</h3>
+            <h3 className="text-2xl font-serif font-bold text-accent group-hover:text-primary transition-colors mb-1">{car.name}</h3>
+            <p className="text-primary font-bold text-lg">{car.pricePerDay} € <span className="text-[10px] text-gray-400 font-normal uppercase">/ Jour</span></p>
           </div>
         </div>
         

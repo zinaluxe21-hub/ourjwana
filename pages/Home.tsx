@@ -28,13 +28,13 @@ const Home: React.FC = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="bg-transparent">
       {/* HERO SECTION */}
-      <section className="relative h-[90vh] flex items-center overflow-hidden">
+      <section className="relative h-[95vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover" alt="Luxury Car Morocco" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
         </div>
         
-        <div className="relative container mx-auto px-6 z-10 text-white">
+        <div className="relative container mx-auto px-6 z-10 text-white pt-20">
           <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex items-center gap-3 mb-6">
               <span className="w-12 h-[1px] bg-primary"></span>
@@ -47,7 +47,8 @@ const Home: React.FC = () => {
             <p className="text-lg md:text-2xl text-gray-300 mb-12 max-w-xl font-light leading-relaxed">
               Redéfinissez votre voyage au Maroc. Excellence technique, service VIP et une flotte de véhicules neufs à votre disposition.
             </p>
-            <div className="flex flex-wrap gap-6">
+            {/* ESPACEMENT AJOUTÉ ICI mb-24 */}
+            <div className="flex flex-wrap gap-6 mb-24">
               <Link to="/laflotte" className="group bg-primary text-white px-10 py-5 rounded-full font-bold shadow-2xl hover:bg-[#a0482b] transition-all text-[11px] uppercase tracking-widest flex items-center gap-3">
                 Explorer le Catalogue <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform"/>
               </Link>
