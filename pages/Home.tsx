@@ -20,6 +20,7 @@ const Home: React.FC = () => {
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
   const [selectedCategory, setSelectedCategory] = useState('TOUS');
 
+  // Message d'accueil personnalisé pour les boutons génériques
   const defaultWhatsappMsg = encodeURIComponent("Bonjour Alorjwana Car, je souhaite réserver une voiture");
   const defaultWhatsappLink = `https://wa.me/212786455138?text=${defaultWhatsappMsg}`;
 
@@ -66,14 +67,18 @@ const Home: React.FC = () => {
       <section className="py-24 md:py-32 container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="relative pb-24 lg:pb-0">
-            {/* PHOTO VIP - Mise à jour avec myphoto.jpg */}
-            <div className="rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] w-full relative z-0">
-              <img src="/myphoto.jpg" alt="Alorjwana VIP Fleet" className="w-full h-full object-cover" />
+            {/* PHOTO VIP - Amélioration responsive pour Desktop */}
+            <div className="rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] lg:aspect-auto lg:h-[550px] w-full relative z-0">
+              <img 
+                src="/myphoto.jpg" 
+                alt="Alorjwana VIP Fleet" 
+                className="w-full h-full object-cover object-center" 
+              />
               <div className="absolute inset-0 bg-black/5" />
             </div>
             
-            {/* FLOATING CARD VIP - Amélioration responsive */}
-            <div className="absolute -bottom-8 right-4 md:-bottom-12 md:-right-8 bg-white p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-2xl max-w-[280px] md:max-w-sm border border-primary/5 z-10 transition-transform hover:scale-105 duration-500">
+            {/* FLOATING CARD VIP */}
+            <div className="absolute -bottom-10 right-4 lg:bottom-12 lg:-right-8 bg-white p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-2xl max-w-[280px] md:max-w-sm border border-primary/5 z-10 transition-transform hover:scale-105 duration-500">
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6 shadow-inner">
                    <Award size={32} />
                 </div>
@@ -84,7 +89,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           
-          <div className="space-y-12 mt-16 lg:mt-0">
+          <div className="space-y-12 mt-24 lg:mt-0">
             <div>
               <span className="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-4 block">Notre Expertise</span>
               <h2 className="text-5xl md:text-7xl font-serif font-bold text-accent leading-tight">L'Engagement <br/><span className="text-primary italic">Qualité Totale</span></h2>
