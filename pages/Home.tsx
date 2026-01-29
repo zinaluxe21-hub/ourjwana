@@ -1,7 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Award, CheckCircle2, LayoutGrid, Zap, Car as CarIcon, Users, Trophy, Star, Quotes } from 'lucide-react';
+import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Award, CheckCircle2, LayoutGrid, Zap, Car as CarIcon, Users, Trophy, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { carsData, Car } from '../constants/carsData';
 import CarCard from '../components/CarCard';
@@ -68,11 +68,11 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICE VIP SECTION - FIX DESKTOP BADGE POSITIONING */}
-      <section className="py-20 md:py-40 container mx-auto px-6">
+      {/* SERVICE VIP SECTION - FIXED LAYOUT */}
+      <section className="min-h-screen h-auto py-20 md:py-40 container mx-auto px-6 flex flex-col justify-center">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
-          {/* Visual Container */}
+          {/* Visual Side */}
           <div className="w-full relative">
             <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] md:h-[650px] z-0">
               <img 
@@ -82,8 +82,8 @@ const Home: React.FC = () => {
                 onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200'; }}
               />
             </div>
-            {/* VIP Card: Absolute on Desktop, Relative on Mobile to avoid scroll lock */}
-            <div className="relative -mt-16 mx-4 md:mx-0 md:absolute md:mt-0 md:-bottom-10 md:-right-10 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10 transition-all">
+            {/* VIP Card: Absolute only on Desktop for overlapping effect */}
+            <div className="relative -mt-16 mx-4 md:mx-0 md:absolute md:mt-0 md:-bottom-10 md:-right-10 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10">
                 <div className="w-12 h-12 md:w-20 md:h-20 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6">
                    <Award size={32} className="md:w-10 md:h-10" />
                 </div>
@@ -94,9 +94,9 @@ const Home: React.FC = () => {
             </div>
           </div>
           
-          {/* Info Section */}
+          {/* Content Side */}
           <div className="space-y-12 w-full mt-12 lg:mt-0">
-            <div className="max-w-md text-center lg:text-left">
+            <div className="text-center lg:text-left">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Promesse</span>
               <h2 className="text-4xl md:text-7xl font-serif font-bold text-accent leading-tight">L'Engagement <br/><span className="text-primary italic">Qualité</span></h2>
             </div>
@@ -106,8 +106,8 @@ const Home: React.FC = () => {
                 { title: "Transparence Totale", desc: "Pas de frais cachés. Prix fixes et contrats clairs dès le départ.", icon: <CheckCircle2 size={24}/> },
                 { title: "Support 24h/7", desc: "Une assistance routière et commerciale à votre écoute à tout moment.", icon: <ShieldCheck size={24}/> }
               ].map((item, i) => (
-                <div key={i} className="flex gap-6 group items-center">
-                  <div className="w-14 h-14 flex-shrink-0 bg-white shadow-lg rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                <div key={i} className="flex gap-6 items-center">
+                  <div className="w-14 h-14 flex-shrink-0 bg-white shadow-lg rounded-2xl flex items-center justify-center text-primary border border-primary/5 group-hover:bg-primary group-hover:text-white transition-all">
                     {item.icon}
                   </div>
                   <div>
@@ -153,8 +153,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* REVIEWS SECTION - RESTAURATION */}
-      <section className="py-24 md:py-32 overflow-hidden">
+      {/* REVIEWS SECTION - RESTAURED */}
+      <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
              <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Témoignages</span>
@@ -187,7 +187,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* FOOTER CTA */}
+      {/* FOOTER CTA - UPDATED TEXT */}
       <section className="py-24 container mx-auto px-6">
         <div className="bg-accent rounded-[3rem] md:rounded-[4rem] p-10 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl">
           <div className="max-w-xl text-center lg:text-left z-10">
