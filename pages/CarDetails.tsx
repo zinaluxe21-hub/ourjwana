@@ -46,7 +46,9 @@ const CarDetails: React.FC = () => {
           <div className="flex flex-col">
             <span className="text-primary font-bold uppercase tracking-[0.4em] text-xs mb-4 block">{car.category}</span>
             <h1 className="text-5xl md:text-7xl font-bold text-accent mb-2 leading-tight">{car.name}</h1>
-            <p className="text-2xl md:text-3xl font-bold text-primary mb-8">{car.pricePerDay} € <span className="text-sm text-accent font-normal">/ Jour</span></p>
+            <p className="text-2xl md:text-3xl font-bold text-primary mb-8 tracking-wider uppercase">
+              À partir de {car.pricePerDay} €
+            </p>
             
             <p className="text-xl text-gray-600 italic leading-relaxed mb-12 border-l-4 border-primary/20 pl-6">
               "{car.description}"

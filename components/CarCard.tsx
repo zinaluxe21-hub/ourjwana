@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Users, Gauge, Fuel, Eye, MessageCircle, ShieldCheck, Tag } from 'lucide-react';
+import { Users, Gauge, Fuel, Eye, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Car } from '../constants/carsData';
 import { motion } from 'framer-motion';
 
@@ -30,9 +30,6 @@ const CarCard: React.FC<CarCardProps> = ({ car, onViewDetails }) => {
           <span className="bg-white/90 backdrop-blur-md px-5 py-2 rounded-full text-[9px] font-bold text-accent uppercase tracking-[0.2em] shadow-sm flex items-center gap-2">
             <ShieldCheck size={12} className="text-primary"/> État Neuf
           </span>
-          <span className="bg-primary px-5 py-2 rounded-full text-[9px] font-bold text-white uppercase tracking-[0.2em] shadow-lg flex items-center gap-2">
-            <Tag size={12}/> À partir de {car.pricePerDay} €
-          </span>
         </div>
         <div className="absolute inset-0 bg-accent/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
            <button 
@@ -48,8 +45,10 @@ const CarCard: React.FC<CarCardProps> = ({ car, onViewDetails }) => {
         <div className="flex justify-between items-start mb-6">
           <div>
             <span className="text-primary font-bold uppercase tracking-[0.3em] text-[8px] mb-2 block">{car.category}</span>
-            <h3 className="text-2xl font-serif font-bold text-accent group-hover:text-primary transition-colors mb-1">{car.name}</h3>
-            <p className="text-primary font-bold text-lg">{car.pricePerDay} € <span className="text-[10px] text-gray-400 font-normal uppercase">/ Jour</span></p>
+            <h3 className="text-2xl font-serif font-bold text-accent group-hover:text-primary transition-colors mb-2">{car.name}</h3>
+            <p className="text-primary font-bold text-sm tracking-widest uppercase">
+              À partir de {car.pricePerDay} €
+            </p>
           </div>
         </div>
         
