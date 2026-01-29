@@ -1,16 +1,16 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Car as CarIcon, Star, LayoutGrid, Heart, Zap, Users, Trophy } from 'lucide-react';
+import { Car as CarIcon, Star, LayoutGrid, Zap, Users, Trophy } from 'lucide-react';
 import { carsData, Car } from '../constants/carsData';
 import CarCard from '../components/CarCard';
 import CarModal from '../components/CarModal';
 
 const categories = [
   { id: 'TOUS', label: 'TOUS', icon: <LayoutGrid size={18}/> },
-  { id: 'ÉCONOMIE', label: 'ÉCO', icon: <Zap size={18}/> },
   { id: 'Luxe', label: 'LUXE', icon: <Star size={18}/> },
   { id: 'SUV', label: 'SUV', icon: <CarIcon size={18}/> },
+  { id: 'ÉCONOMIE', label: 'ÉCO', icon: <Zap size={18}/> },
   { id: 'FAMILLE', label: 'FAMILLE', icon: <Users size={18}/> },
   { id: 'SPORT', label: 'SPORT', icon: <Trophy size={18}/> },
 ];
@@ -31,7 +31,7 @@ const Fleet: React.FC = () => {
         <h1 className="text-5xl md:text-7xl font-bold text-accent mb-12 font-serif">Collection <span className="text-primary italic">Privée</span></h1>
       </div>
 
-      {/* CATEGORY FILTER - NO SCROLL, JUST WRAP (Exactement comme dans votre capture) */}
+      {/* CATEGORY FILTER - MATCHING THE SCREENSHOT STYLE */}
       <div className="mb-20">
         <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 py-2">
           {categories.map((cat) => {
@@ -40,9 +40,9 @@ const Fleet: React.FC = () => {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`flex items-center gap-3 px-8 py-4 rounded-full font-bold text-[11px] tracking-widest uppercase transition-all duration-300 shadow-sm border ${
+                className={`flex items-center gap-3 px-8 py-5 rounded-full font-bold text-[11px] tracking-widest uppercase transition-all duration-300 shadow-sm border ${
                   isActive 
-                  ? 'bg-[#2C3E50] text-white border-[#2C3E50] shadow-xl scale-105' 
+                  ? 'bg-accent text-white border-accent shadow-xl scale-105' 
                   : 'bg-white text-gray-400 border-gray-100 hover:border-primary/30 hover:text-primary'
                 }`}
               >

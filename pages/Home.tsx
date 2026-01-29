@@ -35,9 +35,9 @@ const Home: React.FC = () => {
   }, [selectedCategory]);
 
   return (
-    <div className="bg-transparent min-h-screen">
+    <div className="bg-transparent">
       {/* HERO SECTION */}
-      <section className="relative min-h-[600px] h-[90vh] flex items-center section-crop">
+      <section className="relative min-h-[600px] h-screen lg:h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover" alt="Luxury Car Morocco" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
@@ -68,12 +68,12 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICE VIP SECTION - FIXED SCROLL HEIGHT */}
-      <section className="min-h-fit py-20 lg:py-32 flex items-center container mx-auto px-6">
+      {/* SERVICE VIP SECTION */}
+      <section className="min-h-screen py-20 lg:py-32 flex items-center container mx-auto px-6">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:gap-24 items-center w-full">
           
           <div className="w-full relative">
-            <div className="relative rounded-[2.5rem] md:rounded-[4rem] section-crop shadow-2xl border-4 border-white aspect-[4/5] md:h-[650px] z-0">
+            <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] md:h-[650px] z-0">
               <img 
                 src="/myphoto.jpg" 
                 alt="Alorjwana VIP Service" 
