@@ -31,7 +31,7 @@ const CarCard: React.FC<CarCardProps> = ({ car, onViewDetails }) => {
             <ShieldCheck size={12} className="text-primary"/> État Neuf
           </span>
         </div>
-        <div className="absolute inset-0 bg-accent/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none md:pointer-events-auto">
+        <div className="absolute inset-0 bg-accent/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
            <button onClick={onViewDetails} className="bg-white text-accent px-8 py-4 rounded-full font-bold shadow-2xl tracking-widest uppercase text-[10px]">
              Détails
            </button>
@@ -61,7 +61,7 @@ const CarCard: React.FC<CarCardProps> = ({ car, onViewDetails }) => {
           <p className="text-primary font-bold text-xl mb-6">À partir de {car.pricePerDay} €</p>
           <div className="grid grid-cols-2 gap-3">
             <button onClick={onViewDetails} className="py-4 rounded-xl border border-primary/10 text-accent font-bold text-[9px] tracking-widest uppercase hover:bg-primary/5 transition-all">
-              Infos
+              Détails
             </button>
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="bg-primary text-white py-4 rounded-xl font-bold text-[9px] tracking-widest flex items-center justify-center gap-2 shadow-lg shadow-primary/20 uppercase">
               <MessageCircle size={16} /> Réserver
