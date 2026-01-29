@@ -1,9 +1,9 @@
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="h-full">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Alorjwana Car | L'Excellence Automobile au Maroc</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,15 +13,25 @@
             --secondary: #FDF8F3;
             --accent: #2C3E50;
         }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            -webkit-overflow-scrolling: touch;
+        }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #FDF8F3;
             color: #2C3E50;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
         }
-        /* MOTIF ZELLIGE GIRIH - Opacité réduite à 0.12 */
+        /* Wrapper pour gérer l'overflow sans bloquer le scroll natif */
+        #root-wrapper {
+            overflow-x: hidden;
+            width: 100%;
+            min-height: 100%;
+            position: relative;
+        }
+        /* MOTIF ZELLIGE GIRIH - Opacité à 0.12 */
         body::before {
             content: "";
             position: fixed;
@@ -65,7 +75,9 @@
 </script>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root-wrapper">
+        <div id="root"></div>
+    </div>
     <script type="module" src="/index.tsx"></script>
 </body>
 </html>

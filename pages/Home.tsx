@@ -1,7 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Award, Star, CheckCircle2, LayoutGrid, Zap, Car as CarIcon, Users, Trophy } from 'lucide-react';
+import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Award, CheckCircle2, LayoutGrid, Zap, Car as CarIcon, Users, Trophy, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { carsData, Car } from '../constants/carsData';
 import CarCard from '../components/CarCard';
@@ -62,11 +62,11 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICE VIP SECTION - CLEAN MOBILE FLOW (NO SCROLL BUG) */}
-      <section className="py-20 md:py-40 container mx-auto px-6">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      {/* SERVICE VIP SECTION - OPTIMIZED FOR MOBILE SCROLL */}
+      <section className="py-20 md:py-40 container mx-auto px-6 relative">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           
-          {/* L-Image Section */}
+          {/* Visual Container */}
           <div className="w-full relative">
             <div className="relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] md:h-[600px] z-0">
               <img 
@@ -76,8 +76,8 @@ const Home: React.FC = () => {
                 onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200'; }}
               />
             </div>
-            {/* White card - Relative flow on mobile ensures height is calculated correctly */}
-            <div className="relative -mt-20 mx-4 md:mx-0 md:absolute md:mt-0 md:-bottom-10 md:-right-10 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10">
+            {/* White card - Relative on mobile to prevent scroll locking */}
+            <div className="relative -mt-20 mx-4 md:mx-0 md:absolute md:mt-0 md:-bottom-10 md:-right-10 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10 transition-transform">
                 <div className="w-12 h-12 md:w-20 md:h-20 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6">
                    <Award size={32} className="md:w-10 md:h-10" />
                 </div>
@@ -88,8 +88,8 @@ const Home: React.FC = () => {
             </div>
           </div>
           
-          {/* Text Section */}
-          <div className="space-y-10 w-full">
+          {/* Information Section */}
+          <div className="space-y-10 w-full mt-10 lg:mt-0">
             <div className="max-w-md">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Promesse</span>
               <h2 className="text-4xl md:text-7xl font-serif font-bold text-accent leading-tight">L'Engagement <br/><span className="text-primary italic">Qualité</span></h2>
@@ -140,7 +140,7 @@ const Home: React.FC = () => {
           </div>
 
           <AnimatePresence mode="popLayout">
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {filteredCars.map(car => (
                 <CarCard key={car.id} car={car} onViewDetails={() => setSelectedCar(car)} />
               ))}
@@ -149,11 +149,14 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* FOOTER CTA */}
+      {/* FOOTER CTA - UPDATED TEXT */}
       <section className="py-24 container mx-auto px-6">
-        <div className="bg-accent rounded-[3.5rem] p-10 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
-          <div className="max-w-xl text-center lg:text-left">
-            <h2 className="text-4xl md:text-7xl font-serif font-bold text-white mb-8">Votre Voyage <br/>Commence Ici.</h2>
+        <div className="bg-accent rounded-[3rem] md:rounded-[4rem] p-10 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="max-w-xl text-center lg:text-left z-10">
+            <h2 className="text-4xl md:text-7xl font-serif font-bold text-white mb-6">Prêt à Prendre <br/><span className="text-primary">La Route ?</span></h2>
+            <p className="text-white/60 text-base md:text-lg mb-10 leading-relaxed font-light">
+              Réservez en 2 minutes via WhatsApp. Notre équipe est à votre écoute pour personnaliser votre expérience et répondre à tous vos besoins.
+            </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
                <a href={`${CONTACT_WA}${DEFAULT_MSG}`} className="bg-primary text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 hover:scale-105 transition-all shadow-2xl text-[10px] tracking-widest uppercase">
                  <MessageCircle size={18}/> RÉSERVER MAINTENANT
@@ -163,7 +166,7 @@ const Home: React.FC = () => {
                </a>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4 md:gap-8">
+          <div className="grid grid-cols-2 gap-4 md:gap-8 relative z-10">
              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2.5rem] text-center shadow-2xl">
                 <h4 className="text-primary text-4xl md:text-6xl font-bold mb-2">10+</h4>
                 <p className="text-white/40 text-[9px] font-bold uppercase tracking-widest">EXPÉRIENCE</p>
@@ -173,6 +176,9 @@ const Home: React.FC = () => {
                 <p className="text-white/40 text-[9px] font-bold uppercase tracking-widest">ASSISTANCE</p>
              </div>
           </div>
+          
+          {/* Subtle background decoration */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" />
         </div>
       </section>
 
