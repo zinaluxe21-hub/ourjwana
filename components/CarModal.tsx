@@ -88,7 +88,6 @@ const CarModal: React.FC<CarModalProps> = ({ car, onClose }) => {
                 <div className="bg-secondary p-10 rounded-[2.5rem] border border-primary/10 relative overflow-hidden">
                   <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
                   
-                  {/* PRIX ICI (Blasa li glti bl-khdr) */}
                   <div className="mb-8">
                     <p className="text-primary font-bold text-2xl tracking-wider uppercase">
                       À partir de {car.pricePerDay} €
@@ -122,7 +121,6 @@ const CarModal: React.FC<CarModalProps> = ({ car, onClose }) => {
                       </div>
                     </div>
 
-                    {/* BOUTON AVEC ICONS WAST MENNO (Blast l-rouge) */}
                     <button 
                       type="submit" 
                       className="group w-full bg-primary text-white py-6 rounded-2xl font-bold flex items-center justify-between px-8 hover:bg-[#a0482b] transition-all shadow-2xl shadow-primary/20 text-xs uppercase tracking-[0.2em]"
@@ -133,7 +131,7 @@ const CarModal: React.FC<CarModalProps> = ({ car, onClose }) => {
                     </button>
                   </form>
                   <div className="mt-8 flex items-center justify-center gap-3 text-[9px] font-bold text-gray-400 uppercase tracking-widest">
-                    <MapPin size={14} className="text-primary"/> Livraison Aéroport & Riad Partout au Maroc
+                    <MapPin size={14} className="text-primary"/> Livraison Aéroport & Localisation Partout au Maroc
                   </div>
                 </div>
               </div>

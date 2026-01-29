@@ -65,23 +65,26 @@ const Home: React.FC = () => {
       {/* SERVICE SECTION */}
       <section className="py-24 md:py-32 container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div className="relative pb-32 lg:pb-0">
-            {/* PHOTO DIAL PARKING (Updated with Hyundai Tucson in parking) */}
-            <div className="rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] lg:aspect-[4/3]">
-              <img src="https://dmassets.hyundai.com/is/image/hyundaiautoever/Hyundai_TUCSON_Hybrid_MY25_2024?wid=1200" alt="Alorjwana VIP Service" className="w-full h-full object-cover" />
+          <div className="relative pb-24 lg:pb-0">
+            {/* PHOTO VIP - Mise à jour avec myphoto.jpg */}
+            <div className="rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] w-full relative z-0">
+              <img src="/myphoto.jpg" alt="Alorjwana VIP Fleet" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-black/5" />
             </div>
-            {/* FLOATING CARD - OPTIMISÉE MOBILE */}
-            <div className="absolute -bottom-10 right-4 lg:-bottom-10 lg:-right-10 bg-white p-8 lg:p-12 rounded-[2.5rem] shadow-2xl max-w-[300px] lg:max-w-xs border border-primary/5 z-20">
-                <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-primary/5 flex items-center justify-center text-primary mb-6">
+            
+            {/* FLOATING CARD VIP - Amélioration responsive */}
+            <div className="absolute -bottom-8 right-4 md:-bottom-12 md:-right-8 bg-white p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-2xl max-w-[280px] md:max-w-sm border border-primary/5 z-10 transition-transform hover:scale-105 duration-500">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6 shadow-inner">
                    <Award size={32} />
                 </div>
-                <h4 className="text-xl lg:text-2xl font-serif font-bold text-accent mb-3">Service VIP</h4>
-                <p className="text-gray-500 text-xs lg:text-sm leading-relaxed">
-                  Nous vous livrons votre voiture à l'aéroport ou directement à votre <span className="text-primary font-bold lowercase">localisation</span> partout au Maroc.
+                <h4 className="text-xl md:text-3xl font-serif font-bold text-accent mb-4">Service VIP</h4>
+                <p className="text-gray-500 text-xs md:text-sm leading-relaxed font-medium">
+                  Nous vous livrons votre voiture à l'aéroport ou directement à votre <span className="text-primary font-bold">localisation</span> partout au Maroc.
                 </p>
             </div>
           </div>
-          <div className="space-y-12 mt-12 lg:mt-0">
+          
+          <div className="space-y-12 mt-16 lg:mt-0">
             <div>
               <span className="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-4 block">Notre Expertise</span>
               <h2 className="text-5xl md:text-7xl font-serif font-bold text-accent leading-tight">L'Engagement <br/><span className="text-primary italic">Qualité Totale</span></h2>
@@ -93,7 +96,7 @@ const Home: React.FC = () => {
                 { title: "Assistance Premium", desc: "Un problème sur la route ? Notre équipe technique intervient immédiatement 24h/24.", icon: <ShieldCheck size={24}/> }
               ].map((item, i) => (
                 <div key={i} className="flex gap-6 group">
-                  <div className="w-16 h-16 bg-white shadow-xl rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <div className="w-16 h-16 flex-shrink-0 bg-white shadow-xl rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                     {item.icon}
                   </div>
                   <div>
@@ -107,7 +110,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* FLOTTE SECTION SUR HOME PAGE AVEC FILTRE */}
+      {/* FLOTTE SECTION */}
       <section className="py-32 bg-accent/5 backdrop-blur-sm relative border-y border-primary/5">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
