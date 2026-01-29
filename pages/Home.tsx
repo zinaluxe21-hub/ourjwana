@@ -1,14 +1,29 @@
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Award, Star, CheckCircle2 } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Award, Star, CheckCircle2, LayoutGrid, Zap, Car as CarIcon, Users, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { carsData, Car } from '../constants/carsData';
 import CarCard from '../components/CarCard';
 import CarModal from '../components/CarModal';
 
+const categories = [
+  { id: 'TOUS', label: 'TOUS', icon: <LayoutGrid size={18}/> },
+  { id: 'ÉCONOMIE', label: 'ÉCO', icon: <Zap size={18}/> },
+  { id: 'Luxe', label: 'LUXE', icon: <Star size={18}/> },
+  { id: 'SUV', label: 'SUV', icon: <CarIcon size={18}/> },
+  { id: 'FAMILLE', label: 'FAMILLE', icon: <Users size={18}/> },
+  { id: 'SPORT', label: 'SPORT', icon: <Trophy size={18}/> },
+];
+
 const Home: React.FC = () => {
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState('TOUS');
+
+  const filteredCars = useMemo(() => {
+    if (selectedCategory === 'TOUS') return carsData;
+    return carsData.filter(car => car.category.toUpperCase() === selectedCategory.toUpperCase());
+  }, [selectedCategory]);
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="bg-transparent">
@@ -44,14 +59,13 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICE SECTION - FIXED OVERLAP FOR MOBILE */}
+      {/* SERVICE SECTION */}
       <section className="py-24 md:py-32 container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="relative pb-24 lg:pb-0">
             <div className="rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] lg:aspect-auto">
               <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&q=80&w=1200" alt="Alorjwana VIP Service" className="w-full h-full object-cover" />
             </div>
-            {/* VIP CARD OVERLAP - MOBILE OPTIMIZED */}
             <div className="absolute -bottom-6 right-0 lg:-bottom-10 lg:-right-10 bg-white p-8 lg:p-12 rounded-[2.5rem] shadow-2xl max-w-[280px] lg:max-w-xs border border-primary/5 z-20">
                 <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-primary/5 flex items-center justify-center text-primary mb-6">
                    <Award size={32} />
@@ -86,27 +100,52 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* FEATURED CARS */}
+      {/* FLOTTE SECTION SUR HOME PAGE AVEC FILTRE */}
       <section className="py-32 bg-accent/5 backdrop-blur-sm relative border-y border-primary/5">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
+          <div className="text-center mb-16">
             <span className="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-4 block">Notre Flotte</span>
-            <h2 className="text-5xl font-serif font-bold text-accent">Les Véhicules <span className="text-primary italic">Stars</span></h2>
+            <h2 className="text-5xl font-serif font-bold text-accent mb-12">Choisissez Votre <span className="text-primary italic">Véhicule</span></h2>
+            
+            {/* BARRE DE CATEGORIES SUR HOME */}
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-20">
+              {categories.map((cat) => {
+                const isActive = selectedCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`flex items-center gap-3 px-6 py-3 rounded-full font-bold text-[10px] tracking-widest uppercase transition-all duration-300 shadow-sm border ${
+                      isActive 
+                      ? 'bg-[#2C3E50] text-white border-[#2C3E50] shadow-xl scale-105' 
+                      : 'bg-white text-gray-400 border-gray-100 hover:border-primary/30 hover:text-primary'
+                    }`}
+                  >
+                    <span className={isActive ? 'text-primary' : 'text-gray-300'}>{cat.icon}</span>
+                    {cat.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-10">
-            {carsData.slice(0, 3).map(car => (
-              <CarCard key={car.id} car={car} onViewDetails={() => setSelectedCar(car)} />
-            ))}
-          </div>
+
+          <AnimatePresence mode="popLayout">
+            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {filteredCars.map(car => (
+                <CarCard key={car.id} car={car} onViewDetails={() => setSelectedCar(car)} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
           <div className="mt-20 text-center">
              <Link to="/laflotte" className="text-accent font-bold text-[11px] tracking-widest uppercase border-b-2 border-primary pb-2 hover:gap-6 transition-all flex items-center justify-center gap-4">
-               Découvrir toute la flotte <ArrowRight size={16}/>
+               Explorer tout le catalogue <ArrowRight size={16}/>
              </Link>
           </div>
         </div>
       </section>
 
-      {/* EXPERIENCE SECTION - REDUCED BOTTOM PADDING */}
+      {/* EXPERIENCE SECTION */}
       <section className="pt-32 pb-12">
         <div className="container mx-auto px-6">
            <div className="bg-[#2C3E50] rounded-[3.5rem] p-10 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -117,7 +156,7 @@ const Home: React.FC = () => {
                   <a href="https://wa.me/212786455138" className="bg-[#C15B36] text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 hover:scale-105 transition-all shadow-2xl text-[10px] tracking-[0.2em] uppercase">
                     <MessageCircle size={18}/> RÉSERVER VIA WHATSAPP
                   </a>
-                  <a href="tel:+212664739991" className="text-white border border-white/20 px-10 py-5 rounded-2xl font-bold hover:bg-white/10 transition-all text-[10px] tracking-[0.2em] uppercase">
+                  <a href="tel:+212661776685" className="text-white border border-white/20 px-10 py-5 rounded-2xl font-bold hover:bg-white/10 transition-all text-[10px] tracking-[0.2em] uppercase">
                     NOUS APPELER
                   </a>
                </div>
@@ -137,7 +176,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* TESTIMONIALS SECTION - REDUCED TOP PADDING */}
+      {/* TESTIMONIALS SECTION */}
       <section className="pt-12 pb-32">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">

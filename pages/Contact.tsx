@@ -12,6 +12,7 @@ const Contact: React.FC = () => {
              <div>
                <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Assistance 24/7</span>
                <h1 className="text-5xl md:text-7xl font-bold text-accent mb-10 leading-tight">À Votre <br/><span className="text-primary italic">Entière Disposition</span></h1>
+               <h3 className="text-2xl font-serif font-bold text-accent mb-6">Service Commercial & Réservations</h3>
                <p className="text-xl text-gray-500 font-light mb-16">Nous sommes disponibles pour répondre à vos questions et organiser votre location partout au Maroc.</p>
                
                <div className="space-y-8">
@@ -19,7 +20,7 @@ const Contact: React.FC = () => {
                    <div className="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center shadow-lg"><Phone size={24}/></div>
                    <div>
                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Téléphone Direct</p>
-                     <p className="text-xl font-bold text-accent">+212 664-739991</p>
+                     <p className="text-xl font-bold text-accent">+212 661-776685</p>
                    </div>
                  </div>
                  <div className="flex items-center gap-6 p-8 bg-white rounded-[2rem] shadow-sm border border-gray-100">

@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-6">
             <div className={`hidden xl:flex flex-col items-end ${isSolid ? 'text-accent' : 'text-white'}`}>
                <span className="text-[8px] font-bold uppercase tracking-widest text-primary">Contact Direct</span>
-               <a href="tel:+212664739991" className="text-sm font-bold">+212 664-739991</a>
+               <a href="tel:+212661776685" className="text-sm font-bold">+212 661-776685</a>
             </div>
             <a href="https://wa.me/212786455138" className="bg-primary text-white px-10 py-4 rounded-xl font-bold text-[10px] tracking-[0.2em] hover:bg-[#a0482b] transition-all shadow-xl shadow-primary/20 uppercase">RÉSERVER</a>
             <button onClick={() => setIsMenuOpen(true)} className={`lg:hidden p-2 transition-colors ${isSolid ? 'text-primary' : 'text-white'}`}>
@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
               <div className="pt-16 border-t border-primary/10">
                 <p className="text-gray-400 text-[10px] uppercase tracking-[0.5em] mb-6 font-bold">Besoin d'aide ?</p>
                 <div className="space-y-4">
-                  <a href="tel:+212664739991" className="block text-2xl font-bold text-accent">+212 664-739991</a>
+                  <a href="tel:+212661776685" className="block text-2xl font-bold text-accent">+212 661-776685</a>
                   <a href="https://wa.me/212786455138" className="inline-flex items-center gap-3 text-primary font-bold text-lg"><MessageCircle size={20}/> WhatsApp Direct</a>
                 </div>
               </div>

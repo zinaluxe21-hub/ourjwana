@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-accent uppercase tracking-widest text-[10px] mb-8">Contact</h4>
             <ul className="space-y-4">
-              <li className="flex items-center gap-3 text-sm text-gray-500"><Phone size={16} className="text-primary"/> +212 664-739991</li>
+              <li className="flex items-center gap-3 text-sm text-gray-500"><Phone size={16} className="text-primary"/> +212 661-776685</li>
               <li className="flex items-center gap-3 text-sm text-gray-500"><MapPin size={16} className="text-primary"/> Partout au Maroc</li>
             </ul>
           </div>

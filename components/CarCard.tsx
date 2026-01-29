@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Users, Gauge, Fuel, Eye, MessageCircle, ShieldCheck } from 'lucide-react';
+import { Users, Gauge, Fuel, Eye, MessageCircle, ShieldCheck, Tag } from 'lucide-react';
 import { Car } from '../constants/carsData';
 import { motion } from 'framer-motion';
 
@@ -26,9 +26,12 @@ const CarCard: React.FC<CarCardProps> = ({ car, onViewDetails }) => {
           alt={car.name} 
           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
         />
-        <div className="absolute top-6 left-6">
+        <div className="absolute top-6 left-6 flex flex-col gap-2">
           <span className="bg-white/90 backdrop-blur-md px-5 py-2 rounded-full text-[9px] font-bold text-accent uppercase tracking-[0.2em] shadow-sm flex items-center gap-2">
             <ShieldCheck size={12} className="text-primary"/> État Neuf
+          </span>
+          <span className="bg-primary px-5 py-2 rounded-full text-[9px] font-bold text-white uppercase tracking-[0.2em] shadow-lg flex items-center gap-2">
+            <Tag size={12}/> À partir de {car.pricePerDay} €
           </span>
         </div>
         <div className="absolute inset-0 bg-accent/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
