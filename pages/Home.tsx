@@ -20,6 +20,9 @@ const Home: React.FC = () => {
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
   const [selectedCategory, setSelectedCategory] = useState('TOUS');
 
+  const defaultWhatsappMsg = encodeURIComponent("Bonjour Alorjwana Car, je souhaite réserver une voiture");
+  const defaultWhatsappLink = `https://wa.me/212786455138?text=${defaultWhatsappMsg}`;
+
   const filteredCars = useMemo(() => {
     if (selectedCategory === 'TOUS') return carsData;
     return carsData.filter(car => car.category.toUpperCase() === selectedCategory.toUpperCase());
@@ -47,12 +50,11 @@ const Home: React.FC = () => {
             <p className="text-lg md:text-2xl text-gray-300 mb-12 max-w-xl font-light leading-relaxed">
               Redéfinissez votre voyage au Maroc. Excellence technique, service VIP et une flotte de véhicules neufs à votre disposition.
             </p>
-            {/* ESPACEMENT AJOUTÉ ICI mb-24 */}
             <div className="flex flex-wrap gap-6 mb-24">
               <Link to="/laflotte" className="group bg-primary text-white px-10 py-5 rounded-full font-bold shadow-2xl hover:bg-[#a0482b] transition-all text-[11px] uppercase tracking-widest flex items-center gap-3">
                 Explorer le Catalogue <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform"/>
               </Link>
-              <a href="https://wa.me/212786455138" className="bg-white/10 backdrop-blur-xl border border-white/20 px-10 py-5 rounded-full font-bold hover:bg-white/20 transition-all flex items-center gap-3 text-[11px] uppercase tracking-widest">
+              <a href={defaultWhatsappLink} className="bg-white/10 backdrop-blur-xl border border-white/20 px-10 py-5 rounded-full font-bold hover:bg-white/20 transition-all flex items-center gap-3 text-[11px] uppercase tracking-widest">
                 <MessageCircle size={18} className="text-primary"/> WhatsApp Direct
               </a>
             </div>
@@ -63,19 +65,23 @@ const Home: React.FC = () => {
       {/* SERVICE SECTION */}
       <section className="py-24 md:py-32 container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div className="relative pb-24 lg:pb-0">
-            <div className="rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] lg:aspect-auto">
-              <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&q=80&w=1200" alt="Alorjwana VIP Service" className="w-full h-full object-cover" />
+          <div className="relative pb-32 lg:pb-0">
+            {/* PHOTO DIAL PARKING (Updated with Hyundai Tucson in parking) */}
+            <div className="rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] lg:aspect-[4/3]">
+              <img src="https://dmassets.hyundai.com/is/image/hyundaiautoever/Hyundai_TUCSON_Hybrid_MY25_2024?wid=1200" alt="Alorjwana VIP Service" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute -bottom-6 right-0 lg:-bottom-10 lg:-right-10 bg-white p-8 lg:p-12 rounded-[2.5rem] shadow-2xl max-w-[280px] lg:max-w-xs border border-primary/5 z-20">
+            {/* FLOATING CARD - OPTIMISÉE MOBILE */}
+            <div className="absolute -bottom-10 right-4 lg:-bottom-10 lg:-right-10 bg-white p-8 lg:p-12 rounded-[2.5rem] shadow-2xl max-w-[300px] lg:max-w-xs border border-primary/5 z-20">
                 <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-primary/5 flex items-center justify-center text-primary mb-6">
                    <Award size={32} />
                 </div>
                 <h4 className="text-xl lg:text-2xl font-serif font-bold text-accent mb-3">Service VIP</h4>
-                <p className="text-gray-500 text-xs lg:text-sm leading-relaxed">Nous vous livrons votre voiture à l'aéroport ou directement à votre Riad partout au Maroc.</p>
+                <p className="text-gray-500 text-xs lg:text-sm leading-relaxed">
+                  Nous vous livrons votre voiture à l'aéroport ou directement à votre <span className="text-primary font-bold lowercase">localisation</span> partout au Maroc.
+                </p>
             </div>
           </div>
-          <div className="space-y-12">
+          <div className="space-y-12 mt-12 lg:mt-0">
             <div>
               <span className="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-4 block">Notre Expertise</span>
               <h2 className="text-5xl md:text-7xl font-serif font-bold text-accent leading-tight">L'Engagement <br/><span className="text-primary italic">Qualité Totale</span></h2>
@@ -108,7 +114,6 @@ const Home: React.FC = () => {
             <span className="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-4 block">Notre Flotte</span>
             <h2 className="text-5xl font-serif font-bold text-accent mb-12">Choisissez Votre <span className="text-primary italic">Véhicule</span></h2>
             
-            {/* BARRE DE CATEGORIES SUR HOME */}
             <div className="flex flex-wrap items-center justify-center gap-4 mb-20">
               {categories.map((cat) => {
                 const isActive = selectedCategory === cat.id;
@@ -154,7 +159,7 @@ const Home: React.FC = () => {
                <h2 className="text-4xl md:text-7xl font-serif font-bold text-white mb-8 leading-tight">Prêt à Prendre <br/>La Route ?</h2>
                <p className="text-gray-300 text-lg font-light leading-relaxed mb-12">Réservez en 2 minutes via WhatsApp. Notre équipe est à votre écoute pour personnaliser votre expérience.</p>
                <div className="flex flex-wrap gap-6">
-                  <a href="https://wa.me/212786455138" className="bg-[#C15B36] text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 hover:scale-105 transition-all shadow-2xl text-[10px] tracking-[0.2em] uppercase">
+                  <a href={defaultWhatsappLink} className="bg-[#C15B36] text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 hover:scale-105 transition-all shadow-2xl text-[10px] tracking-[0.2em] uppercase">
                     <MessageCircle size={18}/> RÉSERVER VIA WHATSAPP
                   </a>
                   <a href="tel:+212661776685" className="text-white border border-white/20 px-10 py-5 rounded-2xl font-bold hover:bg-white/10 transition-all text-[10px] tracking-[0.2em] uppercase">

@@ -4,6 +4,9 @@ import { Instagram, Facebook, ArrowRight, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+  const defaultWhatsappMsg = encodeURIComponent("Bonjour Alorjwana Car, je souhaite réserver une voiture");
+  const defaultWhatsappLink = `https://wa.me/212786455138?text=${defaultWhatsappMsg}`;
+
   return (
     <footer className="bg-white pt-24 pb-12 relative overflow-hidden border-t border-primary/10">
       <div className="container mx-auto px-6">
@@ -42,7 +45,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-accent uppercase tracking-widest text-[10px] mb-8">Réserver</h4>
             <p className="text-gray-500 text-xs mb-6 leading-relaxed">Contactez-nous directement via WhatsApp pour une réservation rapide.</p>
-            <a href="https://wa.me/212786455138" className="inline-flex items-center gap-3 bg-primary text-white px-6 py-3 rounded-xl font-bold text-[10px] tracking-widest hover:bg-[#a0482b] transition-all">WHATSAPP DIRECT <ArrowRight size={14}/></a>
+            <a href={defaultWhatsappLink} className="inline-flex items-center gap-3 bg-primary text-white px-6 py-3 rounded-xl font-bold text-[10px] tracking-widest hover:bg-[#a0482b] transition-all">WHATSAPP DIRECT <ArrowRight size={14}/></a>
           </div>
         </div>
         <div className="pt-12 border-t border-primary/5 text-center text-[10px] text-gray-400 font-bold uppercase tracking-widest">
