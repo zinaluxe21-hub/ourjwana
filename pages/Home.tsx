@@ -1,6 +1,6 @@
 
 import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, MessageCircle, ShieldCheck, MapPin, Award, CheckCircle2, LayoutGrid, Zap, Car as CarIcon, Users, Trophy, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { carsData, Car } from '../constants/carsData';
@@ -35,12 +35,12 @@ const Home: React.FC = () => {
   }, [selectedCategory]);
 
   return (
-    <div className="bg-transparent">
+    <div className="bg-transparent min-h-screen">
       {/* HERO SECTION */}
-      <section className="relative min-h-[600px] h-[85vh] md:h-[95vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[600px] h-[90vh] flex items-center section-crop">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover" alt="Luxury Car Morocco" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
         </div>
         
         <div className="relative container mx-auto px-6 z-10 text-white">
@@ -57,24 +57,23 @@ const Home: React.FC = () => {
               Découvrez le Maroc avec élégance. Une flotte exclusive et un service de livraison personnalisé partout au Royaume.
             </p>
             <div className="flex flex-wrap gap-4 md:gap-6">
-              <Link to="/laflotte" className="bg-primary text-white px-8 md:px-12 py-4 md:py-5 rounded-xl font-bold hover:bg-[#a0482b] transition-all text-[10px] uppercase tracking-widest flex items-center gap-3 shadow-2xl shadow-primary/30">
-                Découvrir <ArrowRight size={16}/>
+              <Link to="/laflotte" className="bg-primary text-white px-8 md:px-12 py-4 md:py-6 rounded-xl font-bold hover:bg-[#a0482b] transition-all text-[11px] uppercase tracking-widest flex items-center gap-3 shadow-2xl shadow-primary/30">
+                Explorer le Catalogue <ArrowRight size={18}/>
               </Link>
-              <a href={`${CONTACT_WA}${DEFAULT_MSG}`} className="bg-white/10 backdrop-blur-md border border-white/20 px-8 md:px-12 py-4 md:py-5 rounded-xl font-bold hover:bg-white/20 transition-all flex items-center gap-3 text-[10px] uppercase tracking-widest text-white">
-                <MessageCircle size={18} className="text-primary"/> WhatsApp
+              <a href={`${CONTACT_WA}${DEFAULT_MSG}`} className="bg-white/10 backdrop-blur-md border border-white/20 px-8 md:px-12 py-4 md:py-6 rounded-xl font-bold hover:bg-white/20 transition-all flex items-center gap-3 text-[11px] uppercase tracking-widest text-white">
+                <MessageCircle size={20} className="text-primary"/> WhatsApp Direct
               </a>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* SERVICE VIP SECTION - BUG FIXED: h-auto ON MOBILE, h-screen ON DESKTOP */}
-      <section className="h-auto min-h-fit py-20 md:h-screen md:py-0 flex items-center container mx-auto px-6">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-24 items-center w-full">
+      {/* SERVICE VIP SECTION - FIXED SCROLL HEIGHT */}
+      <section className="min-h-fit py-20 lg:py-32 flex items-center container mx-auto px-6">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:gap-24 items-center w-full">
           
-          {/* Visual Side */}
           <div className="w-full relative">
-            <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] md:h-[650px] z-0">
+            <div className="relative rounded-[2.5rem] md:rounded-[4rem] section-crop shadow-2xl border-4 border-white aspect-[4/5] md:h-[650px] z-0">
               <img 
                 src="/myphoto.jpg" 
                 alt="Alorjwana VIP Service" 
@@ -82,19 +81,17 @@ const Home: React.FC = () => {
                 onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200'; }}
               />
             </div>
-            {/* VIP Card: Positioned absolute ONLY on Desktop, relative on Mobile */}
-            <div className="relative -mt-16 mx-6 md:mx-0 md:absolute md:mt-0 md:-bottom-10 md:-right-10 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10 transition-all">
-                <div className="w-12 h-12 md:w-20 md:h-20 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6">
-                   <Award size={32} className="md:w-10 md:h-10" />
+            <div className="relative -mt-20 mx-6 lg:mx-0 lg:absolute lg:mt-0 lg:-bottom-10 lg:-right-10 bg-white p-8 lg:p-14 rounded-[2.5rem] lg:rounded-[3.5rem] shadow-2xl lg:max-w-sm border border-primary/5 z-10 transition-all">
+                <div className="w-12 h-12 lg:w-20 lg:h-20 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6">
+                   <Award size={32} className="lg:w-10 lg:h-10" />
                 </div>
-                <h4 className="text-2xl md:text-4xl font-serif font-bold text-accent mb-4">Service VIP</h4>
-                <p className="text-gray-500 text-sm md:text-base leading-relaxed font-medium">
+                <h4 className="text-2xl lg:text-4xl font-serif font-bold text-accent mb-4">Service VIP</h4>
+                <p className="text-gray-500 text-sm lg:text-base leading-relaxed font-medium">
                   Livraison gratuite à <span className="text-primary font-bold">l'aéroport</span> ou à votre <span className="text-primary font-bold italic">porte</span> partout au Maroc.
                 </p>
             </div>
           </div>
           
-          {/* Info Side */}
           <div className="space-y-12 w-full pt-10 lg:pt-0">
             <div className="text-center lg:text-left">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Promesse</span>
@@ -122,18 +119,18 @@ const Home: React.FC = () => {
       </section>
 
       {/* FLOTTE SECTION */}
-      <section className="py-24 md:py-32 bg-accent/5 backdrop-blur-sm relative border-y border-primary/5 overflow-hidden">
+      <section className="py-24 md:py-32 bg-accent/5 backdrop-blur-sm relative border-y border-primary/5">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Flotte</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-accent mb-12">Le Choix de la <span className="text-primary italic">Performance</span></h2>
+            <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Parc Automobile</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-bold text-accent mb-12">Collection <span className="text-primary italic">Privée</span></h2>
             
             <div className="flex flex-wrap items-center justify-center gap-3">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-6 md:px-8 py-3 rounded-full font-bold text-[10px] tracking-widest uppercase transition-all shadow-sm border ${
+                  className={`px-6 md:px-8 py-4 rounded-full font-bold text-[10px] tracking-widest uppercase transition-all shadow-sm border ${
                     selectedCategory === cat.id 
                     ? 'bg-accent text-white border-accent shadow-xl scale-105' 
                     : 'bg-white text-gray-400 border-gray-100 hover:border-primary/40 hover:text-primary'
@@ -171,7 +168,7 @@ const Home: React.FC = () => {
                 className="bg-white/70 backdrop-blur-md p-10 rounded-[2.5rem] border border-primary/5 shadow-xl hover:shadow-2xl transition-all relative overflow-hidden group"
               >
                 <div className="flex gap-1 mb-6">
-                  {[...Array(rev.rating)].map((_, i) => <Star key={i} size={16} className="fill-gold text-gold" />)}
+                  {[...Array(rev.rating)].map((_, idx) => <Star key={idx} size={16} className="fill-gold text-gold" />)}
                 </div>
                 <p className="text-gray-600 italic leading-relaxed mb-8 text-lg font-light">"{rev.text}"</p>
                 <div>
