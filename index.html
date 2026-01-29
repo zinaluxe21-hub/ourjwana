@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="fr" class="h-full">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -13,25 +13,17 @@
             --secondary: #FDF8F3;
             --accent: #2C3E50;
         }
+        /* Suppression du height: 100% pour laisser le scroll natif fonctionner normalement */
         html, body {
-            height: 100%;
             margin: 0;
             padding: 0;
-            -webkit-overflow-scrolling: touch;
-        }
-        body {
-            font-family: 'Montserrat', sans-serif;
             background-color: #FDF8F3;
             color: #2C3E50;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden; /* Empêche le scroll horizontal accidentel */
         }
-        /* Wrapper pour gérer l'overflow sans bloquer le scroll natif */
-        #root-wrapper {
-            overflow-x: hidden;
-            width: 100%;
-            min-height: 100%;
-            position: relative;
-        }
-        /* MOTIF ZELLIGE GIRIH - Opacité à 0.12 */
+        
+        /* MOTIF ZELLIGE GIRIH - Fixé en arrière-plan */
         body::before {
             content: "";
             position: fixed;
@@ -43,11 +35,15 @@
             z-index: -1;
             pointer-events: none;
         }
+        
         h1, h2, h3, h4, .serif {
             font-family: 'Playfair Display', serif;
         }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Optimisation pour les transitions */
+        .page-transition {
+            transition: opacity 0.3s ease-in-out;
+        }
     </style>
     <script>
         window.tailwind.config = {
@@ -75,9 +71,7 @@
 </script>
 </head>
 <body>
-    <div id="root-wrapper">
-        <div id="root"></div>
-    </div>
+    <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
 </body>
 </html>

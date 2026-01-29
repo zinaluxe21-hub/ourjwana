@@ -29,9 +29,9 @@ const Home: React.FC = () => {
   }, [selectedCategory]);
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="bg-transparent">
+    <div className="bg-transparent">
       {/* HERO SECTION */}
-      <section className="relative h-[90vh] md:h-[95vh] flex items-center overflow-hidden">
+      <section className="relative h-[85vh] md:h-[95vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover" alt="Luxury Car Morocco" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
@@ -43,12 +43,12 @@ const Home: React.FC = () => {
               <span className="w-8 h-[1px] bg-primary"></span>
               <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-primary">Prestige & Excellence</span>
             </div>
-            <h1 className="text-5xl md:text-9xl font-bold mb-8 leading-tight font-serif">
+            <h1 className="text-4xl md:text-9xl font-bold mb-8 leading-tight font-serif">
               Alorjwana <br/>
               <span className="text-primary italic">Car Rental</span>
             </h1>
-            <p className="text-base md:text-xl text-gray-300 mb-10 max-w-lg font-light leading-relaxed">
-              Découvrez le Maroc avec élégance. Une flotte exclusive et un service de livraison personnalisé.
+            <p className="text-sm md:text-xl text-gray-300 mb-10 max-w-lg font-light leading-relaxed">
+              Découvrez le Maroc avec élégance. Une flotte exclusive et un service de livraison personnalisé partout au Royaume.
             </p>
             <div className="flex flex-wrap gap-4 md:gap-6">
               <Link to="/laflotte" className="bg-primary text-white px-8 md:px-12 py-4 md:py-5 rounded-xl font-bold hover:bg-[#a0482b] transition-all text-[10px] uppercase tracking-widest flex items-center gap-3 shadow-2xl shadow-primary/30">
@@ -62,13 +62,13 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICE VIP SECTION - OPTIMIZED FOR MOBILE SCROLL */}
-      <section className="py-20 md:py-40 container mx-auto px-6 relative">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+      {/* SERVICE VIP SECTION - CLEAN STRUCTURE FOR SMOOTH SCROLL */}
+      <section className="py-20 md:py-40 container mx-auto px-6">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           
-          {/* Visual Container */}
+          {/* Visual Side */}
           <div className="w-full relative">
-            <div className="relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] md:h-[600px] z-0">
+            <div className="relative rounded-[2rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] md:h-[650px] z-0">
               <img 
                 src="/myphoto.jpg" 
                 alt="Alorjwana VIP Service" 
@@ -76,32 +76,32 @@ const Home: React.FC = () => {
                 onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200'; }}
               />
             </div>
-            {/* White card - Relative on mobile to prevent scroll locking */}
-            <div className="relative -mt-20 mx-4 md:mx-0 md:absolute md:mt-0 md:-bottom-10 md:-right-10 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10 transition-transform">
-                <div className="w-12 h-12 md:w-20 md:h-20 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6">
-                   <Award size={32} className="md:w-10 md:h-10" />
+            {/* White card - Relative flow in mobile avoids scroll capture issues */}
+            <div className="relative -mt-20 mx-4 md:mx-0 md:absolute md:mt-0 md:-bottom-10 md:-right-10 bg-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[3rem] shadow-2xl md:max-w-xs border border-primary/5 z-10">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6">
+                   <Award size={28} className="md:w-8 md:h-8" />
                 </div>
-                <h4 className="text-2xl md:text-4xl font-serif font-bold text-accent mb-4">Service VIP</h4>
-                <p className="text-gray-500 text-sm md:text-base leading-relaxed font-medium">
+                <h4 className="text-xl md:text-3xl font-serif font-bold text-accent mb-4">Service VIP</h4>
+                <p className="text-gray-500 text-xs md:text-sm leading-relaxed font-medium">
                   Livraison gratuite à <span className="text-primary font-bold">l'aéroport</span> ou à votre <span className="text-primary font-bold italic">porte</span> partout au Maroc.
                 </p>
             </div>
           </div>
           
-          {/* Information Section */}
-          <div className="space-y-10 w-full mt-10 lg:mt-0">
-            <div className="max-w-md">
+          {/* Content Side */}
+          <div className="space-y-12 w-full pt-10 lg:pt-0">
+            <div>
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Promesse</span>
               <h2 className="text-4xl md:text-7xl font-serif font-bold text-accent leading-tight">L'Engagement <br/><span className="text-primary italic">Qualité</span></h2>
             </div>
-            <div className="space-y-8">
+            <div className="space-y-10">
               {[
                 { title: "Partout au Maroc", desc: "Casablanca, Marrakech, Tanger... Nous couvrons tout le territoire.", icon: <MapPin size={24}/> },
                 { title: "Transparence Totale", desc: "Pas de frais cachés. Prix fixes et contrats clairs dès le départ.", icon: <CheckCircle2 size={24}/> },
                 { title: "Support 24h/7", desc: "Une assistance routière et commerciale à votre écoute à tout moment.", icon: <ShieldCheck size={24}/> }
               ].map((item, i) => (
-                <div key={i} className="flex gap-6 group">
-                  <div className="w-14 h-14 flex-shrink-0 bg-white shadow-lg rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                <div key={i} className="flex gap-6">
+                  <div className="w-14 h-14 flex-shrink-0 bg-white shadow-lg rounded-2xl flex items-center justify-center text-primary border border-primary/5">
                     {item.icon}
                   </div>
                   <div>
@@ -115,7 +115,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* FLOTTE SECTION */}
+      {/* FLOTTE SECTION - REMOVED HEAVY ANIMATIONS FOR PERFORMANCE */}
       <section className="py-24 md:py-32 bg-accent/5 backdrop-blur-sm relative border-y border-primary/5">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
                   className={`px-6 md:px-8 py-3 rounded-full font-bold text-[10px] tracking-widest uppercase transition-all shadow-sm border ${
                     selectedCategory === cat.id 
                     ? 'bg-accent text-white border-accent shadow-xl scale-105' 
-                    : 'bg-white text-gray-400 border-gray-100 hover:border-primary/40 hover:text-primary'
+                    : 'bg-white text-gray-400 border-gray-100'
                   }`}
                 >
                   {cat.label}
@@ -139,22 +139,20 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          <AnimatePresence mode="popLayout">
-            <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {filteredCars.map(car => (
-                <CarCard key={car.id} car={car} onViewDetails={() => setSelectedCar(car)} />
-              ))}
-            </motion.div>
-          </AnimatePresence>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {filteredCars.map(car => (
+              <CarCard key={car.id} car={car} onViewDetails={() => setSelectedCar(car)} />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* FOOTER CTA - UPDATED TEXT */}
+      {/* FOOTER CTA - UPDATED TEXT AS REQUESTED */}
       <section className="py-24 container mx-auto px-6">
         <div className="bg-accent rounded-[3rem] md:rounded-[4rem] p-10 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="max-w-xl text-center lg:text-left z-10">
-            <h2 className="text-4xl md:text-7xl font-serif font-bold text-white mb-6">Prêt à Prendre <br/><span className="text-primary">La Route ?</span></h2>
-            <p className="text-white/60 text-base md:text-lg mb-10 leading-relaxed font-light">
+            <h2 className="text-4xl md:text-7xl font-serif font-bold text-white mb-6">Prêt à Prendre <br/><span className="text-primary italic">La Route ?</span></h2>
+            <p className="text-white/70 text-base md:text-lg mb-10 leading-relaxed font-light">
               Réservez en 2 minutes via WhatsApp. Notre équipe est à votre écoute pour personnaliser votre expérience et répondre à tous vos besoins.
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
@@ -177,13 +175,12 @@ const Home: React.FC = () => {
              </div>
           </div>
           
-          {/* Subtle background decoration */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" />
         </div>
       </section>
 
       <CarModal car={selectedCar} onClose={() => setSelectedCar(null)} />
-    </motion.div>
+    </div>
   );
 };
 
