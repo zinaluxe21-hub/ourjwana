@@ -26,10 +26,10 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      {/* Container principal sans overflow:hidden qui pourrait bloquer le scroll body */}
-      <div className="relative min-h-screen w-full flex flex-col selection:bg-primary selection:text-white bg-transparent">
+      {/* S7I7: min-h-screen w-full overflow-x-hidden sans h-screen fixe */}
+      <div className="relative min-h-screen w-full flex flex-col selection:bg-primary selection:text-white bg-transparent overflow-x-hidden">
         <Navbar />
-        <main className="flex-grow w-full relative">
+        <main className="flex-grow w-full relative touch-pan-y">
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<Home />} />

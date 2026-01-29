@@ -14,35 +14,33 @@
             --accent: #2C3E50;
         }
         
-        /* FORCE GLOBAL SCROLL - NO TRAPS */
+        /* STEP 1: FORCE MOBILE SCROLLING */
         html, body {
           width: 100%;
+          overflow-x: hidden !important; /* Interdire le scroll horizontal */
+          overflow-y: auto !important;   /* Forcer le scroll vertical */
+          height: auto !important;       /* Ne pas bloquer la hauteur */
+          min-height: 100%;
+          touch-action: pan-y !important; /* Autoriser le swipe vertical uniquement */
+          -webkit-overflow-scrolling: touch; /* Scroll fluide sur iOS */
+          position: relative;
+          background-color: #FDF8F3;
           margin: 0;
           padding: 0;
-          background-color: #FDF8F3;
-          color: #2C3E50;
-          font-family: 'Montserrat', sans-serif;
-          -webkit-font-smoothing: antialiased;
-          overflow-x: hidden !important; /* Block horizontal */
-          overflow-y: auto !important;   /* Allow vertical always */
-          height: auto !important;
-          min-height: 100vh;
-          touch-action: pan-y !important; /* Allow swipe vertical */
-          -webkit-overflow-scrolling: touch;
         }
 
         #root {
           width: 100%;
-          min-height: 100vh;
           overflow-x: hidden;
-          display: flex;
-          flex-direction: column;
+          position: relative;
+          min-height: 100vh;
         }
 
-        /* ZELLIGE MARRAKECH (Refined to match Star/Circle Octagon) */
+        /* STEP 2: MOTIF ZELLIGE EXACT (Matching Screenshot) */
         .bg-zellige {
           background-color: #FDF8F3;
-          background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C15B36' stroke-opacity='0.12' stroke-width='0.6'%3E%3Cpath d='M60 10 L75 45 L110 60 L75 75 L60 110 L45 75 L10 60 L45 45 Z'/%3E%3Ccircle cx='60' cy='60' r='10'/%3E%3Cpath d='M0 60 L10 60 M110 60 L120 60 M60 0 L60 10 M60 110 L60 120 M0 0 L20 20 M100 20 L120 0 M120 120 L100 100 M20 100 L0 120'/%3E%3C/g%3E%3C/svg%3E");
+          /* SVG dessiné pour matcher l'étoile à 8 branches et le cercle central */
+          background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C15B36' stroke-opacity='0.15' stroke-width='0.7'%3E%3Cpath d='M50 10 L60 38 L90 50 L60 62 L50 90 L40 62 L10 50 L40 38 Z'/%3E%3Ccircle cx='50' cy='50' r='10'/%3E%3Cpath d='M0 0 L25 25 M75 25 L100 0 M100 100 L75 75 M25 75 L0 100 M50 0 L50 10 M50 90 L50 100 M0 50 L10 50 M90 50 L100 50'/%3E%3C/g%3E%3C/svg%3E");
           background-repeat: repeat;
         }
         
@@ -50,15 +48,12 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Standardize image cropping */
-        .img-mask {
-            overflow: hidden;
-            border-radius: 2rem;
-        }
-        
-        @media (min-width: 768px) {
-            .img-mask {
-                border-radius: 4rem;
+        /* Désactivation des animations qui bloquent le scroll sur mobile */
+        @media (max-width: 768px) {
+            .no-mobile-scroll-lock {
+                height: auto !important;
+                position: relative !important;
+                overflow: visible !important;
             }
         }
     </style>
