@@ -13,14 +13,15 @@
             --secondary: #FDF8F3;
             --accent: #2C3E50;
         }
-        /* Suppression du height: 100% pour laisser le scroll natif fonctionner normalement */
+        
         html, body {
             margin: 0;
             padding: 0;
             background-color: #FDF8F3;
             color: #2C3E50;
             font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden; /* Empêche le scroll horizontal accidentel */
+            -webkit-font-smoothing: antialiased;
+            /* Ne pas mettre overflow-x: hidden ici pour éviter de casser le scroll iOS */
         }
         
         /* MOTIF ZELLIGE GIRIH - Fixé en arrière-plan */
@@ -39,10 +40,10 @@
         h1, h2, h3, h4, .serif {
             font-family: 'Playfair Display', serif;
         }
-        
-        /* Optimisation pour les transitions */
-        .page-transition {
-            transition: opacity 0.3s ease-in-out;
+
+        /* Amélioration du toucher pour mobile */
+        * {
+            touch-action: manipulation;
         }
     </style>
     <script>

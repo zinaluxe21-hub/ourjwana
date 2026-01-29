@@ -26,8 +26,8 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      {/* bg-transparent est crucial pour voir le motif dans index.html */}
-      <div className="min-h-screen flex flex-col selection:bg-primary selection:text-white bg-transparent">
+      {/* Wrapper global pour empêcher le scroll horizontal sans casser le vertical */}
+      <div className="overflow-x-hidden w-full relative min-h-screen flex flex-col selection:bg-primary selection:text-white bg-transparent">
         <Navbar />
         <main className="flex-grow">
           <AnimatePresence mode="wait">

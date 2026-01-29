@@ -14,11 +14,10 @@ const CarCard: React.FC<CarCardProps> = ({ car, onViewDetails }) => {
 
   return (
     <motion.div 
-      layout 
-      initial={{ opacity: 0, y: 20 }} 
+      initial={{ opacity: 0, y: 10 }} 
       whileInView={{ opacity: 1, y: 0 }} 
       viewport={{ once: true }} 
-      className="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-primary/5 flex flex-col h-full"
+      className="group bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-primary/5 flex flex-col h-full"
     >
       <div className="relative h-60 md:h-64 overflow-hidden bg-gray-100">
         <img 
