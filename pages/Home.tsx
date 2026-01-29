@@ -35,9 +35,9 @@ const Home: React.FC = () => {
   }, [selectedCategory]);
 
   return (
-    <div className="bg-transparent w-full">
-      {/* HERO SECTION - Changé h-screen en min-h-screen pour mobile */}
-      <section className="relative min-h-[650px] lg:h-[90vh] flex items-center overflow-hidden">
+    <div className="bg-transparent w-full touch-pan-y">
+      {/* HERO SECTION - S7I7: min-h-screen (Step 2) */}
+      <section className="relative min-h-[650px] lg:h-[90vh] flex items-center overflow-x-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover" alt="Luxury Car Morocco" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
@@ -68,12 +68,12 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICE VIP SECTION - Changé min-h-screen en h-auto pour éviter le blocage */}
-      <section className="h-auto py-20 lg:py-32 flex items-center container mx-auto px-6">
+      {/* SERVICE VIP SECTION - S7I7: h-auto (Step 2) + touch-pan-y (Step 3) */}
+      <section className="h-auto py-20 lg:py-32 flex items-center container mx-auto px-6 touch-pan-y">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:gap-24 items-center w-full">
           
           <div className="w-full relative">
-            <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] md:h-[650px] z-0">
+            <div className="relative rounded-[2.5rem] md:rounded-[4rem] section-crop shadow-2xl border-4 border-white aspect-[4/5] md:h-[650px] z-0">
               <img 
                 src="/myphoto.jpg" 
                 alt="Alorjwana VIP Service" 
@@ -119,7 +119,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* FLOTTE SECTION */}
-      <section className="py-24 md:py-32 bg-accent/5 backdrop-blur-sm relative border-y border-primary/5">
+      <section className="py-24 md:py-32 bg-accent/5 backdrop-blur-sm relative border-y border-primary/5 touch-pan-y">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Parc Automobile</span>
@@ -151,7 +151,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* REVIEWS SECTION */}
-      <section className="py-24 md:py-32">
+      <section className="py-24 md:py-32 touch-pan-y">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
              <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Témoignages</span>
@@ -185,7 +185,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* FOOTER CTA */}
-      <section className="py-24 container mx-auto px-6">
+      <section className="py-24 container mx-auto px-6 touch-pan-y">
         <div className="bg-accent rounded-[3rem] md:rounded-[4rem] p-10 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl">
           <div className="max-w-xl text-center lg:text-left z-10">
             <h2 className="text-4xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">Prêt à Prendre <br/><span className="text-primary italic">La Route ?</span></h2>

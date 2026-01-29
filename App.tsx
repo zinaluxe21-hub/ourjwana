@@ -26,10 +26,10 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      {/* Container principal sans overflow hidden */}
-      <div className="relative min-h-screen flex flex-col selection:bg-primary selection:text-white bg-transparent">
+      {/* S7I7: min-h-screen w-full overflow-x-hidden (Step 2) */}
+      <div className="relative min-h-screen w-full overflow-x-hidden flex flex-col selection:bg-primary selection:text-white bg-transparent">
         <Navbar />
-        <main className="flex-grow w-full relative">
+        <main className="flex-grow w-full relative touch-pan-y">
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<Home />} />

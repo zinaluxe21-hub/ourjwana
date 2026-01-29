@@ -14,44 +14,53 @@
             --accent: #2C3E50;
         }
         
-        /* FIX GLOBAL SCROLL - ANTI LOCK */
-        html {
-            scroll-behavior: smooth;
-            height: -webkit-fill-available;
+        /* 1. FORCE MOBILE SCROLLING (STEP 1) */
+        html, body {
+          width: 100%;
+          overflow-x: hidden !important;
+          overflow-y: auto !important;   /* Scroll forcé */
+          height: auto !important;       /* Pas de hauteur fixe */
+          min-height: 100%;
+          touch-action: pan-y !important; /* Permet le swipe vertical */
+          -webkit-overflow-scrolling: touch;
+          position: relative;
+          background-color: #FDF8F3;
+          margin: 0;
+          padding: 0;
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #FDF8F3;
-            color: #2C3E50;
-            font-family: 'Montserrat', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            overflow-y: auto !important; /* Force scroll vertical */
-            min-height: 100vh;
-            min-height: -webkit-fill-available;
+        #root {
+          width: 100%;
+          overflow-x: hidden;
+          position: relative;
+          min-height: 100vh;
         }
 
-        /* MOTIF ZELLIGE GEOMETRIC (Subtle Lines from screenshot) */
+        /* 2. BACKGROUND ZELLIGE MARRAKECH (MOTIF EXACT) */
         .bg-zellige {
-            background-color: #FDF8F3;
-            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40 Z M0 0 L20 20 M60 20 L80 0 M80 80 L60 60 M20 60 L0 80' stroke='%23C15B36' stroke-opacity='0.1' stroke-width='0.8'/%3E%3C/g%3E%3C/svg%3E");
-            background-repeat: repeat;
+          background-color: #FDF8F3;
+          /* Ce SVG recrée le motif de l'image : Octogones étoilés + Cercles + Interlocking */
+          background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C15B36' stroke-opacity='0.08' stroke-width='0.8'%3E%3Cpath d='M50 0 L65 35 L100 50 L65 65 L50 100 L35 65 L0 50 L35 35 Z'/%3E%3Ccircle cx='50' cy='50' r='8'/%3E%3Cpath d='M0 0 L25 25 M75 25 L100 0 M100 100 L75 75 M25 75 L0 100'/%3E%3Crect x='25' y='25' width='50' height='50' rotate='45'/%3E%3C/g%3E%3C/svg%3E");
+          background-repeat: repeat;
         }
-        
+
         h1, h2, h3, h4, .serif {
             font-family: 'Playfair Display', serif;
         }
 
-        /* Fluidité mobile */
-        * {
-            -webkit-overflow-scrolling: touch;
+        /* Fix pour les éléments qui pourraient bloquer */
+        canvas, video, iframe, img {
+          max-width: 100%;
+          touch-action: auto;
         }
 
-        /* Suppression des classes qui bloquent le scroll */
-        .no-scroll { overflow: hidden !important; }
-        .force-scroll { overflow-y: auto !important; height: auto !important; }
+        /* Anti-lock global */
+        .overflow-hidden {
+          overflow: visible !important;
+        }
+        .section-crop {
+          overflow: hidden !important; /* Uniquement pour les images */
+        }
     </style>
     <script>
         window.tailwind.config = {
