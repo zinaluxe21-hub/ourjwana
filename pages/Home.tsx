@@ -68,12 +68,12 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICE VIP SECTION - RECONSTRUCTED FOR DESKTOP OVERLAP */}
-      <section className="py-20 md:py-40 container mx-auto px-6">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+      {/* SERVICE VIP SECTION - FIXING LAYOUT & MOBILE HEIGHT */}
+      <section className="min-h-screen h-auto py-20 md:h-screen md:py-0 flex items-center container mx-auto px-6 overflow-hidden">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-24 items-center w-full">
           
-          {/* Left: Image Container with Absolute Badge for Desktop */}
-          <div className="relative w-full">
+          {/* Visual Container */}
+          <div className="w-full relative">
             <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] md:h-[650px] z-0">
               <img 
                 src="/myphoto.jpg" 
@@ -82,8 +82,8 @@ const Home: React.FC = () => {
                 onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200'; }}
               />
             </div>
-            {/* VIP Card: Positioned absolute ONLY on md+ screens */}
-            <div className="relative -mt-20 mx-6 md:mx-0 md:absolute md:mt-0 md:-bottom-10 md:-right-10 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10 transition-all hover:scale-105 duration-300">
+            {/* VIP Card: Positioned absolute ONLY on Desktop */}
+            <div className="relative -mt-16 mx-6 md:mx-0 md:absolute md:mt-0 md:-bottom-10 md:-right-10 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10 transition-all">
                 <div className="w-12 h-12 md:w-20 md:h-20 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6">
                    <Award size={32} className="md:w-10 md:h-10" />
                 </div>
@@ -94,7 +94,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           
-          {/* Right: Info Section */}
+          {/* Info Side */}
           <div className="space-y-12 w-full pt-10 lg:pt-0">
             <div className="text-center lg:text-left">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Promesse</span>
@@ -153,7 +153,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* REVIEWS SECTION - RESTAURED BEAUTIFULLY */}
+      {/* REVIEWS SECTION - RESTAURED */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
@@ -187,7 +187,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* FOOTER CTA - UPDATED TEXT */}
+      {/* FOOTER CTA */}
       <section className="py-24 container mx-auto px-6">
         <div className="bg-accent rounded-[3rem] md:rounded-[4rem] p-10 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl">
           <div className="max-w-xl text-center lg:text-left z-10">
