@@ -29,9 +29,9 @@ const Home: React.FC = () => {
   }, [selectedCategory]);
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="bg-transparent overflow-x-hidden">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="bg-transparent">
       {/* HERO SECTION */}
-      <section className="relative h-[90vh] md:h-[95vh] flex items-center">
+      <section className="relative h-[90vh] md:h-[95vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover" alt="Luxury Car Morocco" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
@@ -62,12 +62,13 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SERVICE VIP SECTION - SOLUTION MOBILE STACKED FLOW */}
+      {/* SERVICE VIP SECTION - CLEAN MOBILE FLOW (NO SCROLL BUG) */}
       <section className="py-20 md:py-40 container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          <div className="flex flex-col">
-            {/* Image Container */}
-            <div className="rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white relative z-0 aspect-[4/5] md:aspect-auto md:h-[600px] w-full">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          
+          {/* L-Image Section */}
+          <div className="w-full relative">
+            <div className="relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] md:h-[600px] z-0">
               <img 
                 src="/myphoto.jpg" 
                 alt="Alorjwana VIP Service" 
@@ -75,20 +76,20 @@ const Home: React.FC = () => {
                 onError={(e) => { (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200'; }}
               />
             </div>
-            
-            {/* Service Card - Relative with negative margin on mobile to fix scroll bug */}
-            <div className="relative -mt-20 md:absolute md:mt-0 md:-bottom-10 md:-right-10 mx-4 md:mx-0 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10">
-                <div className="w-12 h-12 md:w-20 md:h-20 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6 md:mb-8">
+            {/* White card - Relative flow on mobile ensures height is calculated correctly */}
+            <div className="relative -mt-20 mx-4 md:mx-0 md:absolute md:mt-0 md:-bottom-10 md:-right-10 bg-white p-8 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl md:max-w-sm border border-primary/5 z-10">
+                <div className="w-12 h-12 md:w-20 md:h-20 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-6">
                    <Award size={32} className="md:w-10 md:h-10" />
                 </div>
-                <h4 className="text-xl md:text-4xl font-serif font-bold text-accent mb-4 md:mb-6">Service VIP</h4>
-                <p className="text-gray-500 text-xs md:text-base leading-relaxed font-medium">
-                  Livraison gratuite à <span className="text-primary font-bold">l'aéroport</span> ou à votre <span className="text-primary font-bold italic">localisation</span> partout au Maroc.
+                <h4 className="text-2xl md:text-4xl font-serif font-bold text-accent mb-4">Service VIP</h4>
+                <p className="text-gray-500 text-sm md:text-base leading-relaxed font-medium">
+                  Livraison gratuite à <span className="text-primary font-bold">l'aéroport</span> ou à votre <span className="text-primary font-bold italic">porte</span> partout au Maroc.
                 </p>
             </div>
           </div>
           
-          <div className="space-y-12 mt-12 lg:mt-0">
+          {/* Text Section */}
+          <div className="space-y-10 w-full">
             <div className="max-w-md">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Promesse</span>
               <h2 className="text-4xl md:text-7xl font-serif font-bold text-accent leading-tight">L'Engagement <br/><span className="text-primary italic">Qualité</span></h2>
@@ -96,8 +97,8 @@ const Home: React.FC = () => {
             <div className="space-y-8">
               {[
                 { title: "Partout au Maroc", desc: "Casablanca, Marrakech, Tanger... Nous couvrons tout le territoire.", icon: <MapPin size={24}/> },
-                { title: "Transparence Totale", desc: "Pas de frais surprises. Contrats clairs et prix fixes dès le départ.", icon: <CheckCircle2 size={24}/> },
-                { title: "Support 24h/7", desc: "Une assistance routière et commerciale disponible à chaque instant.", icon: <ShieldCheck size={24}/> }
+                { title: "Transparence Totale", desc: "Pas de frais cachés. Prix fixes et contrats clairs dès le départ.", icon: <CheckCircle2 size={24}/> },
+                { title: "Support 24h/7", desc: "Une assistance routière et commerciale à votre écoute à tout moment.", icon: <ShieldCheck size={24}/> }
               ].map((item, i) => (
                 <div key={i} className="flex gap-6 group">
                   <div className="w-14 h-14 flex-shrink-0 bg-white shadow-lg rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
@@ -118,7 +119,7 @@ const Home: React.FC = () => {
       <section className="py-24 md:py-32 bg-accent/5 backdrop-blur-sm relative border-y border-primary/5">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">La Sélection</span>
+            <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Notre Flotte</span>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-accent mb-12">Le Choix de la <span className="text-primary italic">Performance</span></h2>
             
             <div className="flex flex-wrap items-center justify-center gap-3">
@@ -129,7 +130,7 @@ const Home: React.FC = () => {
                   className={`px-6 md:px-8 py-3 rounded-full font-bold text-[10px] tracking-widest uppercase transition-all shadow-sm border ${
                     selectedCategory === cat.id 
                     ? 'bg-accent text-white border-accent shadow-xl scale-105' 
-                    : 'bg-white text-gray-400 border-gray-100 hover:text-primary'
+                    : 'bg-white text-gray-400 border-gray-100 hover:border-primary/40 hover:text-primary'
                   }`}
                 >
                   {cat.label}
@@ -150,7 +151,7 @@ const Home: React.FC = () => {
 
       {/* FOOTER CTA */}
       <section className="py-24 container mx-auto px-6">
-        <div className="bg-accent rounded-[3rem] p-10 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="bg-accent rounded-[3.5rem] p-10 md:p-24 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="max-w-xl text-center lg:text-left">
             <h2 className="text-4xl md:text-7xl font-serif font-bold text-white mb-8">Votre Voyage <br/>Commence Ici.</h2>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
@@ -162,14 +163,14 @@ const Home: React.FC = () => {
                </a>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4 md:gap-6">
-             <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] text-center shadow-2xl">
-                <h4 className="text-primary text-3xl md:text-5xl font-bold mb-2">10+</h4>
-                <p className="text-white/40 text-[8px] font-bold uppercase tracking-widest">EXPÉRIENCE</p>
+          <div className="grid grid-cols-2 gap-4 md:gap-8">
+             <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2.5rem] text-center shadow-2xl">
+                <h4 className="text-primary text-4xl md:text-6xl font-bold mb-2">10+</h4>
+                <p className="text-white/40 text-[9px] font-bold uppercase tracking-widest">EXPÉRIENCE</p>
              </div>
-             <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2rem] text-center shadow-2xl mt-8">
-                <h4 className="text-primary text-3xl md:text-5xl font-bold mb-2">24/7</h4>
-                <p className="text-white/40 text-[8px] font-bold uppercase tracking-widest">ASSISTANCE</p>
+             <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-[2.5rem] text-center shadow-2xl mt-10">
+                <h4 className="text-primary text-4xl md:text-6xl font-bold mb-2">24/7</h4>
+                <p className="text-white/40 text-[9px] font-bold uppercase tracking-widest">ASSISTANCE</p>
              </div>
           </div>
         </div>
