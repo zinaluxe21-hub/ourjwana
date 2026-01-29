@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Users, Gauge, Fuel, Eye, MessageCircle, ShieldCheck } from 'lucide-react';
+import { Users, Gauge, Fuel, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Car } from '../constants/carsData';
 import { motion } from 'framer-motion';
 
@@ -31,9 +31,9 @@ const CarCard: React.FC<CarCardProps> = ({ car, onViewDetails }) => {
             <ShieldCheck size={12} className="text-primary"/> État Neuf
           </span>
         </div>
-        <div className="absolute inset-0 bg-accent/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+        <div className="absolute inset-0 bg-accent/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none md:pointer-events-auto">
            <button onClick={onViewDetails} className="bg-white text-accent px-8 py-4 rounded-full font-bold shadow-2xl tracking-widest uppercase text-[10px]">
-             Voir Détails
+             Détails
            </button>
         </div>
       </div>
@@ -58,10 +58,10 @@ const CarCard: React.FC<CarCardProps> = ({ car, onViewDetails }) => {
         </div>
 
         <div className="mt-auto">
-          <p className="text-primary font-bold text-lg mb-6">À partir de {car.pricePerDay} €</p>
+          <p className="text-primary font-bold text-xl mb-6">À partir de {car.pricePerDay} €</p>
           <div className="grid grid-cols-2 gap-3">
             <button onClick={onViewDetails} className="py-4 rounded-xl border border-primary/10 text-accent font-bold text-[9px] tracking-widest uppercase hover:bg-primary/5 transition-all">
-              Détails
+              Infos
             </button>
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="bg-primary text-white py-4 rounded-xl font-bold text-[9px] tracking-widest flex items-center justify-center gap-2 shadow-lg shadow-primary/20 uppercase">
               <MessageCircle size={16} /> Réserver
