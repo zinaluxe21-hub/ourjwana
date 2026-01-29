@@ -21,10 +21,9 @@
             color: #2C3E50;
             font-family: 'Montserrat', sans-serif;
             -webkit-font-smoothing: antialiased;
-            /* Ne pas mettre overflow-x: hidden ici pour éviter de casser le scroll iOS */
         }
         
-        /* MOTIF ZELLIGE GIRIH - Fixé en arrière-plan */
+        /* MOTIF ZELLIGE GIRIH - RESTAURATION */
         body::before {
             content: "";
             position: fixed;
@@ -32,7 +31,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C15B36' stroke-opacity='0.12' stroke-width='2.0'%3E%3Cpath d='M80 0 L100 20 L140 20 L140 60 L160 80 L140 100 L140 140 L100 140 L80 160 L60 140 L20 140 L20 100 L0 80 L20 60 L20 20 L60 20 Z'/%3E%3Cpath d='M80 40 L90 50 L120 50 L120 80 L130 90 L120 100 L120 130 L90 130 L80 140 L70 130 L40 130 L40 100 L30 90 L40 80 L40 50 L70 50 Z'/%3E%3Ccircle cx='80' cy='80' r='12'/%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C15B36' stroke-opacity='0.15' stroke-width='1.5'%3E%3Cpath d='M80 0 L100 20 L140 20 L140 60 L160 80 L140 100 L140 140 L100 140 L80 160 L60 140 L20 140 L20 100 L0 80 L20 60 L20 20 L60 20 Z'/%3E%3Cpath d='M80 40 L90 50 L120 50 L120 80 L130 90 L120 100 L120 130 L90 130 L80 140 L70 130 L40 130 L40 100 L30 90 L40 80 L40 50 L70 50 Z'/%3E%3Ccircle cx='80' cy='80' r='12'/%3E%3C/g%3E%3C/svg%3E");
             z-index: -1;
             pointer-events: none;
         }
@@ -41,9 +40,9 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Amélioration du toucher pour mobile */
+        /* Fluidité du scroll mobile */
         * {
-            touch-action: manipulation;
+            -webkit-overflow-scrolling: touch;
         }
     </style>
     <script>

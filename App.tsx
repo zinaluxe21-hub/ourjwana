@@ -26,8 +26,8 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      {/* Wrapper global pour empêcher le scroll horizontal sans casser le vertical */}
-      <div className="overflow-x-hidden w-full relative min-h-screen flex flex-col selection:bg-primary selection:text-white bg-transparent">
+      {/* Container principal sans overflow restrictif pour permettre le scroll natif */}
+      <div className="relative min-h-screen flex flex-col selection:bg-primary selection:text-white bg-transparent">
         <Navbar />
         <main className="flex-grow">
           <AnimatePresence mode="wait">
