@@ -83,19 +83,23 @@ const CarModal: React.FC<CarModalProps> = ({ car, onClose }) => {
                       </div>
                     </div>
                   ))}
-                  {car.features.extra && (
-                    <div className="col-span-2 flex items-center gap-4 text-primary bg-primary/5 p-4 rounded-2xl border border-primary/10">
-                      <Check size={18} />
-                      <span className="text-xs font-bold uppercase tracking-widest">{car.features.extra}</span>
-                    </div>
-                  )}
                 </div>
 
                 <div className="bg-secondary p-10 rounded-[2.5rem] border border-primary/10 relative overflow-hidden">
                   <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
+                  
+                  {/* PRIX ICI (Blasa li glti bl-khdr) */}
+                  <div className="mb-8">
+                    <p className="text-primary font-bold text-2xl tracking-wider uppercase">
+                      À partir de {car.pricePerDay} €
+                    </p>
+                    <div className="w-12 h-0.5 bg-primary/20 mt-2"></div>
+                  </div>
+
                   <h4 className="font-bold text-accent mb-8 flex items-center gap-3 uppercase text-xs tracking-widest">
                     <Calendar size={20} className="text-primary" /> Réservation Directe
                   </h4>
+                  
                   <form onSubmit={handleBooking} className="space-y-6">
                     <div className="grid grid-cols-2 gap-6">
                       <div className="space-y-2">
@@ -117,11 +121,15 @@ const CarModal: React.FC<CarModalProps> = ({ car, onClose }) => {
                         />
                       </div>
                     </div>
+
+                    {/* BOUTON AVEC ICONS WAST MENNO (Blast l-rouge) */}
                     <button 
                       type="submit" 
-                      className="w-full bg-primary text-white py-6 rounded-2xl font-bold flex items-center justify-center gap-4 hover:bg-[#a0482b] transition-all shadow-2xl shadow-primary/20 text-xs uppercase tracking-[0.2em]"
+                      className="group w-full bg-primary text-white py-6 rounded-2xl font-bold flex items-center justify-between px-8 hover:bg-[#a0482b] transition-all shadow-2xl shadow-primary/20 text-xs uppercase tracking-[0.2em]"
                     >
-                      <MessageCircle size={20}/> Confirmer par WhatsApp <ArrowRight size={16} />
+                      <MessageCircle size={22} className="opacity-80" />
+                      <span>Confirmer par WhatsApp</span>
+                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform opacity-80" />
                     </button>
                   </form>
                   <div className="mt-8 flex items-center justify-center gap-3 text-[9px] font-bold text-gray-400 uppercase tracking-widest">
