@@ -21,9 +21,10 @@
             color: #2C3E50;
             font-family: 'Montserrat', sans-serif;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
         
-        /* MOTIF ZELLIGE GIRIH - RESTAURATION EXACTE */
+        /* MOTIF ZELLIGE GIRIH - VERSION FINALE VISIBLE (Opacité 0.3) */
         body::before {
             content: "";
             position: fixed;
@@ -31,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C15B36' stroke-opacity='0.15' stroke-width='1.5'%3E%3Cpath d='M80 0 L100 20 L140 20 L140 60 L160 80 L140 100 L140 140 L100 140 L80 160 L60 140 L20 140 L20 100 L0 80 L20 60 L20 20 L60 20 Z'/%3E%3Cpath d='M80 40 L90 50 L120 50 L120 80 L130 90 L120 100 L120 130 L90 130 L80 140 L70 130 L40 130 L40 100 L30 90 L40 80 L40 50 L70 50 Z'/%3E%3Ccircle cx='80' cy='80' r='12'/%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C15B36' stroke-opacity='0.3' stroke-width='1'%3E%3Cpath d='M60 0 L75 15 L105 15 L105 45 L120 60 L105 75 L105 105 L75 105 L60 120 L45 105 L15 105 L15 75 L0 60 L15 45 L15 15 L45 15 Z'/%3E%3Cpath d='M60 30 L68 38 L82 38 L82 52 L90 60 L82 68 L82 82 L68 82 L60 90 L52 82 L38 82 L38 68 L30 60 L38 52 L38 38 L52 38 Z'/%3E%3C/g%3E%3C/svg%3E");
             z-index: -1;
             pointer-events: none;
         }
@@ -40,7 +41,7 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Fluidité scroll mobile */
+        /* Support scroll fluide */
         * {
             -webkit-overflow-scrolling: touch;
         }
